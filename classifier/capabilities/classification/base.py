@@ -9,7 +9,7 @@ from abc import abstractmethod
 from typing import Any, Dict, List
 
 from ..base import Capability
-from ..models import ClassificationOutput
+from .models import ClassificationOutput
 
 
 class ClassificationCapability(Capability):

@@ -44,3 +44,17 @@ class BatchClassificationResult(BaseModel):
     """
 
     results: List[ClassificationOutput]
+
+
+class BundledClassificationResult(BaseModel):
+    """
+    Result of evaluating multiple sibling nodes in a single prompt.
+
+    This allows the LLM to see multiple topics at once for richer context
+    and comparative evaluation.
+
+    Attributes:
+        node_results: Dictionary mapping node name to its classification result
+    """
+
+    node_results: Dict[str, SingleClassificationResult]

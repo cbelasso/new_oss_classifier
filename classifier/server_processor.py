@@ -10,11 +10,13 @@ from typing import Any, Callable, Dict, List, Type
 
 from pydantic import BaseModel
 
-from .classifier import HierarchicalClassifier
+from .capabilities.classification import (
+    BFSClassificationCapability,
+    ClassificationOutput,
+    standard_classification_prompt,
+)
 from .hierarchy import load_topic_hierarchy
-from .models import ClassificationOutput
 from .policies import AcceptancePolicy, DefaultPolicy
-from .prompts import standard_classification_prompt
 from .vllm_client import VLLMServerClient
 
 
@@ -64,9 +66,7 @@ class ServerClassificationProcessor:
             max_concurrent=max_concurrent,
         )
 
-        # Initialize classifier
-        self.classifier = HierarchicalClassifier(
-            processor=self.llm_processor,
+        self.classification_capability = BFSClassificationCapability(
             prompt_fn=prompt_fn or standard_classification_prompt,
             policy=policy or DefaultPolicy(),
             separator=separator,
@@ -74,9 +74,14 @@ class ServerClassificationProcessor:
 
     def classify_hierarchical(self, texts: List[str]) -> Dict[str, List[str]]:
         """Classify texts using node-by-node hierarchical traversal."""
-        return self.classifier.classify_hierarchical(
-            texts=texts, topic_hierarchy=self.topic_hierarchy
+        results = self.classification_capability.execute_classification(
+            texts=texts,
+            hierarchy=self.topic_hierarchy,
+            processor=self.llm_processor,
         )
+
+        # Extract just the paths (ClassificationOutput -> List[str])
+        return {text: output.classification_paths for text, output in results.items()}
 
     def classify_target_path(self, texts: List[str], target_path: List[str]) -> Dict[str, Any]:
         """Evaluate texts against a specific target path (leaf node only)."""

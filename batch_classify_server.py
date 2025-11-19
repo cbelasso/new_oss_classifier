@@ -43,17 +43,13 @@ from classifier.capabilities import (
     StemRecommendationsCapability,
     create_default_registry,
 )
+from classifier.capabilities.classification.prompts import standard_classification_prompt
 from classifier.capabilities.stem_trend import StemTrendCapability
 from classifier.policies import (
     CompositePolicy,
     ConfidenceThresholdPolicy,
     DefaultPolicy,
     ExcerptRequiredPolicy,
-)
-from classifier.prompts import (
-    keyword_focused_prompt,
-    sentiment_aware_classification_prompt,
-    standard_classification_prompt,
 )
 from classifier.server_processor import ServerClassificationProcessor
 
@@ -128,8 +124,6 @@ def select_prompt(prompt_type: str):
     """Select prompt function based on type."""
     prompts = {
         "standard": standard_classification_prompt,
-        "keyword": keyword_focused_prompt,
-        "sentiment": sentiment_aware_classification_prompt,
     }
     return prompts.get(prompt_type, standard_classification_prompt)
 
@@ -177,7 +171,7 @@ def format_results_for_output(results: Dict[str, Dict[str, Any]]) -> List[Dict]:
 @click.option(
     "--server-url",
     type=str,
-    default="http://localhost:9001/v1",
+    default="http://localhost:9005/v1",
     help="VLLM server URL",
 )
 @click.option(

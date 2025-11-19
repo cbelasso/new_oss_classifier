@@ -1,0 +1,1989 @@
+[
+  {
+    "text": "The training videos were easy to watch and very helpful.",
+    "classification_result": {
+      "text": "The training videos were easy to watch and very helpful.",
+      "classification_paths": [
+        "ROOT>L&D",
+        "ROOT>L&D>Learning/Growth Opportunity",
+        "ROOT>L&D>Learning/Growth Opportunity>Training/Career Development"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that the training videos were easy to watch and helpful, with no reference to AI, artificial intelligence, or any related keywords.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training videos being easy to watch and helpful, with no reference to organizational culture, values, work environment, or related keywords.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions only the training videos being easy to watch and helpful, with no reference to IT, technology, digital tools, or any related keywords.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training videos being easy to watch and helpful, with no reference to job, work, tasks, responsibilities, or related concepts.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses the training videos being easy to watch and helpful, without mentioning organization, corporate, governance, policy, business, or strategy.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses the training videos being easy to watch and helpful, with no mention of salary, pay, compensation, benefits, or related keywords.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training videos being easy to watch and helpful, with no reference to team, department, colleagues, manager, or any other People/Department concepts.",
+          "excerpt": ""
+        },
+        "L&D": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly discusses \"training videos,\" which directly relates to the L&D keyword 'training' and focuses on that aspect.",
+          "excerpt": "The training videos were easy to watch and very helpful."
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that the training videos were easy to watch and helpful, with no reference to performance reviews, appraisal, feedback, or any other terms related to Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that the training videos were easy to watch and helpful, with no reference to workforce planning, headcount, or any keywords related to Workforce Strategy.",
+          "excerpt": ""
+        },
+        "Learning/Growth Opportunity": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly mentions \"training videos,\" which are a form of training/learning opportunity, directly relating to the Learning/Growth Opportunity topic.",
+          "excerpt": "The training videos were easy to watch and very helpful."
+        },
+        "Promotion/Career Advancement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses the training videos being easy to watch and helpful, with no reference to promotion, career advancement, or related criteria.",
+          "excerpt": ""
+        },
+        "Succession Planning": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that the training videos were easy to watch and helpful, with no reference to succession planning or any related keywords.",
+          "excerpt": ""
+        },
+        "Department/Team": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only talks about the training videos being easy to watch and helpful, with no mention of a department, team, or related group learning context.",
+          "excerpt": ""
+        },
+        "Informal Learning": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions training videos being easy to watch and helpful, with no reference to informal, self‑guided, or experiential learning.",
+          "excerpt": ""
+        },
+        "Mentoring/Coaching": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training videos being easy to watch and helpful, with no reference to mentoring, coaching, mentors, coaches, or personalized feedback.",
+          "excerpt": ""
+        },
+        "Training/Career Development": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly mentions \"training videos\" and describes them as helpful, directly discussing training resources, which falls under the Training/Career Development topic.",
+          "excerpt": "The training videos were easy to watch and very helpful."
+        },
+        "Direct Manager": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training videos being easy to watch and helpful, with no reference to a direct manager or related keywords.",
+          "excerpt": ""
+        },
+        "Managers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training videos being easy to watch and helpful, with no reference to managers, management practices, or related keywords.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": null,
+    "stem_recommendations": null
+  },
+  {
+    "text": "My managers have one-on-one meetings with me and both are always polite, never seemed bothered by our teams questions and always thank us for our help.",
+    "classification_result": {
+      "text": "My managers have one-on-one meetings with me and both are always polite, never seemed bothered by our teams questions and always thank us for our help.",
+      "classification_paths": [
+        "ROOT>People/Department",
+        "ROOT>People/Department>Managers",
+        "ROOT>People/Department>Managers>Direct Manager"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses manager behavior and one-on-one meetings, with no mention of AI, artificial intelligence, or any related keywords defined in the topic.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only describes managers being polite and thanking the team during one‑on‑one meetings, which touches on individual behavior but does not directly discuss organizational culture, values, or overall workplace atmosphere as defined.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses manager behavior and one‑on‑one meetings, with no mention of IT, technology, digital tools, or any related keywords.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only describes manager interactions and meeting politeness, without mentioning any daily tasks, responsibilities, workload, or other job‑related content defined in the topic.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses managers' polite one‑on‑one meetings and does not mention organization, corporate, governance, policy, business, or strategy, which are required to identify the target topic.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses managers' behavior in one-on-one meetings and does not mention any elements of compensation, salary, benefits, or related terms.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly discusses managers and team interactions, stating \"My managers have one-on-one meetings with me... never seemed bothered by our team's questions...\" which directly relates to People/Department.",
+          "excerpt": "My managers have one-on-one meetings with me and both are always polite, never seemed bothered by our teams questions and always thank us for our help."
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses managers holding one‑on‑one meetings and their politeness, with no mention of training, learning, development, or any related keywords.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only mentions polite one‑on‑one meetings and thanks, without any reference to performance reviews, appraisal, feedback, assessment, or related concepts defined for Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only describes polite one‑on‑one meetings with managers and gratitude, without any mention of workforce planning, headcount, resourcing, or other workforce strategy concepts.",
+          "excerpt": ""
+        },
+        "Colleagues": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses managers and one‑on‑one meetings, but contains no mention of colleagues, peers, coworkers, teammates, or fellow employees as defined for the topic.",
+          "excerpt": ""
+        },
+        "Customers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses managers, one‑on‑one meetings, and team interactions, but contains no mention of customers, clients, or any related keywords from the topic definition.",
+          "excerpt": ""
+        },
+        "HR Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses managers and their behavior but contains no mention of HR, human resources, or HR staff, which are required to identify the HR Department as a main topic.",
+          "excerpt": ""
+        },
+        "IT Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses managers and one‑on‑one meetings, with no mention of IT staff, helpdesk, technical support, or any of the keywords defining the IT Department topic.",
+          "excerpt": ""
+        },
+        "Managers": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly discusses the employee's managers, describing regular one‑on‑one meetings and courteous interactions, which directly addresses the topic of relationships with line managers.",
+          "excerpt": "My managers have one-on-one meetings with me and both are always polite, never seemed bothered by our teams questions and always thank us for our help."
+        },
+        "Mentors": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses managers having one‑on‑one meetings and being polite, with no mention of mentors, coaching, or guidance from non‑manager mentors, which are required for the Mentors topic.",
+          "excerpt": ""
+        },
+        "Senior Leadership": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses managers and their one‑on‑one meetings, but it does not mention senior leadership, executives, C‑suite, CEOs, or any of the specified keywords, so there is no evidence of a main topic about senior leadership.",
+          "excerpt": ""
+        },
+        "Trainers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses managers and their one-on-one meetings, with no mention of trainers, training staff, instructors, or any training-related activity.",
+          "excerpt": ""
+        },
+        "Direct Manager": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly discusses \"my managers\" and their one‑on‑one meetings, which are direct supervisors as defined by the topic.",
+          "excerpt": "My managers have one-on-one meetings with me and both are always polite, never seemed bothered by our teams questions and always thank us for our help."
+        }
+      }
+    },
+    "stem_polarity": {
+      "People/Department>Managers>Direct Manager": {
+        "polarity": "Positive",
+        "confidence": 5,
+        "reasoning": "The comment praises the manager(s) for being polite, receptive to questions, and appreciative, indicating clear satisfaction.",
+        "excerpt": "always polite, never seemed bothered by our teams questions and always thank us for our help"
+      }
+    },
+    "stem_recommendations": {
+      "People/Department>Managers>Direct Manager": {
+        "has_recommendations": false,
+        "recommendations": []
+      }
+    }
+  },
+  {
+    "text": "I think it is a great company to work for.",
+    "classification_result": {
+      "text": "I think it is a great company to work for.",
+      "classification_paths": [],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment contains no mention of AI, artificial intelligence, machine learning, or any related keywords, so there is no evidence that AI is a main topic.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only says \"I think it is a great company to work for\" and does not explicitly mention culture, work environment, values, or any of the listed keywords.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment contains no mention of IT, technology, digital tools, or any related keywords, so it does not discuss the IT/Tech topic.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only briefly mentions \"work\" in the phrase \"great company to work for\" without discussing daily tasks, responsibilities, or work content, which are required for the Job/Work main topic.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only says \"I think it is a great company to work for\" and does not discuss organization, corporate governance, policy, or strategy as defined for the topic.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention any terms related to compensation, salary, benefits, or any other Pay/Benefits concepts.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only states a general opinion about the company and does not mention any team, department, colleagues, manager, or other people-related interactions described in the topic definition.",
+          "excerpt": ""
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention any of the keywords or concepts related to training, learning, or development programs.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention any performance assessment, feedback, appraisal, or related keywords; it only states a general opinion about the company.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states a general positive opinion about the company and does not mention any workforce planning, headcount, resourcing, or other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": null,
+    "stem_recommendations": null
+  },
+  {
+    "text": "Online training modules were very helpful",
+    "classification_result": {
+      "text": "Online training modules were very helpful",
+      "classification_paths": [
+        "ROOT>L&D",
+        "ROOT>L&D>Learning/Growth Opportunity",
+        "ROOT>L&D>Learning/Growth Opportunity>Training/Career Development"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the AI-related keywords or any explicit discussion of artificial intelligence, machine learning, or related topics defined for the AI main topic.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses the usefulness of online training modules and does not mention culture, work environment, or any related concepts from the topic definition.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only mentions \"online training modules\" being helpful, which is a brief reference to a digital tool but does not directly or substantially discuss IT/Tech as a main topic.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that \"online training modules were very helpful\" and does not discuss any job, work, tasks, responsibilities, or related concepts defined for the Job/Work topic.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and contains no reference to organization, corporate, governance, policy, business, or strategy, which are required to identify the Organization topic.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and does not discuss salary, pay, compensation, benefits, or any related keywords.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and does not discuss any team, department, colleagues, manager, or other interpersonal relationships.",
+          "excerpt": ""
+        },
+        "L&D": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment directly mentions \"training\" modules, which matches the keyword list for L&D and discusses them as the primary subject of the comment.",
+          "excerpt": "Online training modules were very helpful"
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states that online training modules were helpful and does not mention any performance reviews, appraisal, feedback, assessment, or related keywords, so there is no evidence of discussing Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and contains no reference to workforce planning, headcount, manpower planning, or any other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        },
+        "Learning/Growth Opportunity": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly mentions \"Online training modules\" which are a form of training/learning opportunity, directly matching the topic of Learning/Growth Opportunity.",
+          "excerpt": "Online training modules were very helpful"
+        },
+        "Promotion/Career Advancement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states that the online training modules were helpful and does not mention promotion, career advancement, or any related keywords described in the topic definition.",
+          "excerpt": ""
+        },
+        "Succession Planning": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states that online training modules were helpful and contains no mention of succession planning, leadership pipelines, or any related keywords.",
+          "excerpt": ""
+        },
+        "Department/Team": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and does not refer to any department, team, or group-specific training.",
+          "excerpt": ""
+        },
+        "Informal Learning": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions 'online training modules' being helpful and does not discuss informal, self‑taught, on‑the‑job, or experiential learning.",
+          "excerpt": ""
+        },
+        "Mentoring/Coaching": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and does not reference mentoring, coaching, a mentor, a coach, or personalized feedback, which are required for the Mentoring/Coaching topic.",
+          "excerpt": ""
+        },
+        "Training/Career Development": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly discusses \"online training modules,\" which matches the Training/Career Development topic (e.g., e-learning, training program).",
+          "excerpt": "Online training modules were very helpful"
+        },
+        "Direct Manager": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and does not reference a direct manager, supervisor, or any related keywords.",
+          "excerpt": ""
+        },
+        "Managers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that online training modules were helpful and contains no reference to managers, managerial support, or related concepts.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": null,
+    "stem_recommendations": null
+  },
+  {
+    "text": "A typical day was very productive and fun place to work with good co-workers. An excellent training program in place with good management.",
+    "classification_result": {
+      "text": "A typical day was very productive and fun place to work with good co-workers. An excellent training program in place with good management.",
+      "classification_paths": [
+        "ROOT>Culture/Work Environment",
+        "ROOT>Job/Work",
+        "ROOT>People/Department",
+        "ROOT>L&D",
+        "ROOT>People/Department>Colleagues",
+        "ROOT>L&D>Learning/Growth Opportunity",
+        "ROOT>L&D>Learning/Growth Opportunity>Training/Career Development"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the AI-related keywords (e.g., AI, artificial intelligence, machine learning, automation, AI tools, etc.) or discuss experiences with AI in the workplace.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly describes the workplace as a \"very productive and fun place to work with good co-workers,\" which directly addresses the work environment and atmosphere.",
+          "excerpt": "very productive and fun place to work with good co-workers"
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment contains no mention of IT, technology, software, hardware, digital tools, or related terms; therefore there is no evidence that IT/Tech is a main topic.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly discusses a \"typical day\" and describes the \"place to work\" with co‑workers, directly referring to daily work experience.",
+          "excerpt": "A typical day was very productive and fun place to work with good co-workers."
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only briefly mentions \"good management\", which is a minimal reference and does not constitute a substantial discussion of the organization, corporate governance, policy, or strategy as defined.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses work environment, training, and management but contains no mention of salary, pay, compensation, benefits, or any related keywords.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly refers to \"good co‑workers\" and \"good management,\" both of which are keywords for the People/Department topic describing interactions within the team.",
+          "excerpt": "good co-workers... good management"
+        },
+        "L&D": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly mentions \"excellent training program,\" which directly matches the L&D keyword \"training\" and discusses a learning development initiative.",
+          "excerpt": "An excellent training program in place with good management."
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions a productive day, good co‑workers, and an excellent training program with good management, but contains no reference to performance reviews, appraisal, feedback, assessment, goals, KPIs, or any other keywords tied to Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions a productive day, fun work environment, good co‑workers, training program and management, with no reference to workforce planning, headcount, role fit, future needs, or any other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        },
+        "Accountability/Responsibility": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, fun workplace, good co‑workers, training program, and management, without any reference to accountability, responsibility, ownership, or follow‑through.",
+          "excerpt": ""
+        },
+        "Autonomy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, fun workplace, good co‑workers, training program, and good management, with no reference to autonomy, independence, self‑direction, empowerment, or related keywords.",
+          "excerpt": ""
+        },
+        "Belonging": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, fun, good co‑workers, training and management, but contains no mention of belonging, inclusion, or feeling part of a group.",
+          "excerpt": ""
+        },
+        "Camaraderie": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions \"good co-workers\" and a \"fun place to work\" but does not explicitly discuss friendship, bonding, or camaraderie as defined by the topic.",
+          "excerpt": ""
+        },
+        "Caring": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions productivity, fun, good co‑workers, training, and management, but does not contain any of the caring‑related keywords or describe an atmosphere of empathy, compassion, or support.",
+          "excerpt": ""
+        },
+        "Communication": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions productivity, fun, co‑workers, training program, and management, but contains no reference to communication, information exchange, or any of the listed keywords.",
+          "excerpt": ""
+        },
+        "Community": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions \"good co-workers\" and a \"fun place to work,\" but it does not explicitly discuss a sense of community, unity, or collective identity as defined in the topic.",
+          "excerpt": ""
+        },
+        "CSR": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, co‑workers, training and management, with no reference to CSR, sustainability, community impact, or any related keywords.",
+          "excerpt": ""
+        },
+        "Decision making": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only mentions productivity, fun workplace, good co‑workers, training program, and good management, with no reference to decision‑making processes, transparent decisions, or related concepts.",
+          "excerpt": ""
+        },
+        "DEI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention DEI, diversity, equity, inclusion, or any related keywords; it only discusses productivity, coworkers, training, and management.",
+          "excerpt": ""
+        },
+        "Delegation": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, fun workplace, good co‑workers, training program, and management, but it contains no mention of delegation, assigning tasks, distribution of work, or related keywords.",
+          "excerpt": ""
+        },
+        "Department/Team": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions an overall training program and good co‑workers, but does not refer to a specific department, team, or group‑based training, which is required for the Department/Team topic.",
+          "excerpt": ""
+        },
+        "Employee Engagement": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions a productive and fun workplace and good management, but it does not contain any of the explicit keywords (engagement, enthusiasm, motivation, etc.) or directly discuss the level of employee enthusiasm or involvement as defined for Employee Engagement.",
+          "excerpt": ""
+        },
+        "Employee Loyalty": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions a productive workplace, good co‑workers, training, and management, but contains no mention of loyalty, commitment to stay, retention, pride, or any discussion of employees leaving or staying.",
+          "excerpt": ""
+        },
+        "Employee Voice/Decision Making Involvement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions a productive day, good co‑workers, and an excellent training program with good management, but it contains no reference to employee voice, input, decision‑making involvement, feedback, or participation.",
+          "excerpt": ""
+        },
+        "Facilities": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions productivity, fun, co‑workers, training program, and management, but contains no reference to facilities, office, workspace, or any physical workplace resources as defined in the topic.",
+          "excerpt": ""
+        },
+        "Fairness": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention fairness, fair treatment, impartiality, bias, or favoritism, which are required to identify the Fairness topic.",
+          "excerpt": ""
+        },
+        "Flexibility": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, fun environment, good co‑workers, training, and management, with no reference to adaptability, flexible work approaches, or accommodation, which are required to identify Flexibility as a main topic.",
+          "excerpt": ""
+        },
+        "Integrity": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention integrity, ethics, honesty, principled behavior, or ethical conduct, nor does it discuss these concepts.",
+          "excerpt": ""
+        },
+        "Job Security": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, workplace atmosphere, training, and management, but contains no explicit mention of job security, layoff, employment stability, or related keywords.",
+          "excerpt": ""
+        },
+        "Meetings": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, coworkers, training, and management, but contains no mention of meetings, agenda, discussion, frequency, or any related keywords.",
+          "excerpt": ""
+        },
+        "Mission/Vision/Value": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions a productive day, fun workplace, training program, and good management, with no reference to mission, vision, values, purpose, or guiding principles.",
+          "excerpt": ""
+        },
+        "Networking": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords or discussion about networking, professional connections, or building a professional network.",
+          "excerpt": ""
+        },
+        "Physical Safety": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, fun atmosphere, good co‑workers, training and management, with no reference to physical safety, hazards, injury, or related terms.",
+          "excerpt": ""
+        },
+        "Professionalism": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, fun workplace, good co‑workers, training program, and management but contains no mention of professionalism, professional behavior, decorum, standards, punctuality, or professional conduct as defined.",
+          "excerpt": ""
+        },
+        "Psychological Safety": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, fun workplace, good co‑workers, training program, and management, with no reference to safety in speaking, openness, or any of the listed psychological‑safety keywords.",
+          "excerpt": ""
+        },
+        "Recognition/Award": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, a fun workplace, good co‑workers, training, and management, but contains no mention of recognition, appreciation, awards, thanks, acknowledgment, gratitude, or celebration, which are required to identify the Recognition/Award topic.",
+          "excerpt": ""
+        },
+        "Respect": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention any of the keywords such as respect, regard, dignity, courtesy, esteem, civility, or disrespect, nor does it discuss mutual esteem or regard, so Respect is not a main topic.",
+          "excerpt": ""
+        },
+        "Social Events/Team Building Activities": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, a fun workplace, good co‑workers, training, and management, but contains no mention of social events, team building, gatherings, outings, or related keywords.",
+          "excerpt": ""
+        },
+        "Support": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions \"good co-workers\" and \"good management,\" but does not explicitly discuss assistance, guidance, or any of the support keywords such as \"helpful colleagues\" or \"supportive culture\" required to classify it as a main topic of Support.",
+          "excerpt": ""
+        },
+        "Teamwork/Cooperation": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only briefly mentions \"good co‑workers\" and does not explicitly discuss teamwork, collaboration, or any collective effort, which are required to identify the main topic of Teamwork/Cooperation.",
+          "excerpt": ""
+        },
+        "Trust": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords or any explicit discussion of trust, confidence, reliance, skepticism, mistrust, faith, or trusted relationships.",
+          "excerpt": ""
+        },
+        "Wellbeing": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention wellbeing, health, stress, burnout, or any related concepts; it only discusses productivity, fun, coworkers, training, and management.",
+          "excerpt": ""
+        },
+        "Work life balance": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, fun workplace, co‑workers, training, and management, but contains no mention of work‑life balance, balance, boundaries, family support, outside work, or flexibility as defined in the topic.",
+          "excerpt": ""
+        },
+        "Work Location": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention work location, remote work, onsite, hybrid, or any related keywords; it only discusses productivity, co‑workers, training, and management.",
+          "excerpt": ""
+        },
+        "Work Schedule": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions productivity, coworkers, training, and management, but contains no reference to work schedule, working hours, shifts, scheduling, part‑time, or set hours as defined in the topic.",
+          "excerpt": ""
+        },
+        "Job satisfaction": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment mentions a \"fun place to work\" and positive aspects like good co‑workers and management, but it does not explicitly discuss job satisfaction, fulfillment, or enjoyment of the work as defined by the topic.",
+          "excerpt": ""
+        },
+        "Project": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords or any discussion of project assignments, project work, or related topics as defined.",
+          "excerpt": ""
+        },
+        "Role Clarity": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions productivity, fun workplace, training program, and good management, with no reference to role clarity, responsibilities, expectations, or related keywords.",
+          "excerpt": ""
+        },
+        "Tools/Resources": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, coworkers, training, and management but contains no mention of tools, resources, or related keywords.",
+          "excerpt": ""
+        },
+        "Workflow": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment contains no mention of workflow, process steps, bottlenecks, handoffs, or any of the listed keywords, so there is no explicit evidence of the topic.",
+          "excerpt": ""
+        },
+        "Workload": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions a productive day, fun workplace, good co‑workers, training program, and management, with no reference to workload, task volume, or related keywords.",
+          "excerpt": ""
+        },
+        "Colleagues": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment states \"good co‑workers,\" explicitly referring to colleagues and describing the work environment, which directly addresses the topic of interactions with peers.",
+          "excerpt": "good co‑workers"
+        },
+        "Customers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions productivity, coworkers, training, and management, but contains no reference to customers, clients, or any related keywords.",
+          "excerpt": ""
+        },
+        "HR Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords (HR, human resources, HR staff) or any discussion of interactions with Human Resources personnel or services.",
+          "excerpt": ""
+        },
+        "IT Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, co‑workers, training, and management, but contains no mention of IT, helpdesk, technical support, or any other keywords related to the IT Department.",
+          "excerpt": ""
+        },
+        "Managers": {
+          "is_relevant": false,
+          "confidence": 3,
+          "reasoning": "The comment only briefly mentions \"good management\" in the context of an excellent training program, without directly discussing the role of managers or management practices as a main subject.",
+          "excerpt": ""
+        },
+        "Mentors": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions a productive day, good co‑workers, and an excellent training program with good management, but contains no reference to mentors, mentoring, coaching, or guidance as defined in the topic.",
+          "excerpt": ""
+        },
+        "Senior Leadership": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions \"good management\" but does not explicitly refer to senior leadership, executives, C‑suite, director, CEO, or any of the keywords defining the Senior Leadership topic.",
+          "excerpt": ""
+        },
+        "Trainers": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions an \"excellent training program\" but does not refer to trainers, training staff, instructors, or any interaction with them, which is required for the Trainers topic.",
+          "excerpt": ""
+        },
+        "Learning/Growth Opportunity": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment states \"An excellent training program in place,\" directly referencing a learning and development opportunity, which matches the topic definition.",
+          "excerpt": "An excellent training program in place"
+        },
+        "Promotion/Career Advancement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions a productive day, good co‑workers, and an excellent training program with good management, with no reference to promotion, career advancement, or related criteria.",
+          "excerpt": ""
+        },
+        "Succession Planning": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses productivity, fun workplace, good co‑workers, and an excellent training program, but contains none of the keywords or concepts related to succession planning such as 'succession', 'leadership pipeline', or 'future leaders'.",
+          "excerpt": ""
+        },
+        "Informal Learning": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention informal learning, self‑taught, on‑the‑job learning, peer guidance, or any of the defined keywords; it only refers to a training program and good management.",
+          "excerpt": ""
+        },
+        "Mentoring/Coaching": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions a productive day, good co‑workers, and an excellent training program, but it contains no reference to mentoring, coaching, a mentor, a coach, or personalized feedback as defined for the topic.",
+          "excerpt": ""
+        },
+        "Training/Career Development": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly mentions \"An excellent training program in place\", which directly aligns with the topic definition of formal training and programs for professional skill and career growth.",
+          "excerpt": "An excellent training program in place"
+        },
+        "Direct Manager": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only mentions \"good management\" in passing and does not explicitly discuss a direct or immediate manager’s role in training or development, which is required by the topic definition.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": {
+      "People/Department>Colleagues": {
+        "polarity": "Positive",
+        "confidence": 5,
+        "reasoning": "The comment praises the coworkers by describing them as \"good co‑workers\", indicating clear positive sentiment toward colleagues.",
+        "excerpt": "good co‑workers"
+      }
+    },
+    "stem_recommendations": {
+      "People/Department>Colleagues": {
+        "has_recommendations": false,
+        "recommendations": []
+      }
+    }
+  },
+  {
+    "text": "My salary was increased $8,000/yearly. The management team and my coworkers make me feel valued and respected. All suggestions/ideas are encouraged and if possible pursued. The general work environment and the happiness of the people working at my new organization are positive.",
+    "classification_result": {
+      "text": "My salary was increased $8,000/yearly. The management team and my coworkers make me feel valued and respected. All suggestions/ideas are encouraged and if possible pursued. The general work environment and the happiness of the people working at my new organization are positive.",
+      "classification_paths": [
+        "ROOT>Culture/Work Environment",
+        "ROOT>Pay/Benefits",
+        "ROOT>People/Department",
+        "ROOT>Culture/Work Environment>Employee Voice/Decision Making Involvement",
+        "ROOT>Culture/Work Environment>Recognition/Award",
+        "ROOT>Pay/Benefits>Pay",
+        "ROOT>People/Department>Colleagues",
+        "ROOT>Culture/Work Environment>Recognition/Award>Managers",
+        "ROOT>Pay/Benefits>Pay>Raise"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary, management, and workplace environment but contains no mention of AI, artificial intelligence, machine learning, automation, or any related keywords.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly states that \"The general work environment and the happiness of the people working at my new organization are positive,\" directly discussing the work environment, which matches the Culture/Work Environment topic.",
+          "excerpt": "The general work environment and the happiness of the people working at my new organization are positive."
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, management, coworker relationships, and work environment, with no mention of IT, technology, software, hardware, digital tools, or related concepts defined in the topic.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses salary increase, management, and work environment, but provides no explicit mention of daily tasks, responsibilities, duties, or other aspects defined for the Job/Work topic.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only briefly mentions \"my new organization\" without discussing the company's identity, governance, or related policies, so there is no substantial discussion of the Organization topic.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment states \"My salary was increased $8,000/yearly,\" directly discussing compensation, which matches the Pay/Benefits topic definition.",
+          "excerpt": "My salary was increased $8,000/yearly."
+        },
+        "People/Department": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly discusses \"the management team and my coworkers\" making the employee feel valued, which directly addresses interactions and relationships within the team.",
+          "excerpt": "The management team and my coworkers make me feel valued and respected."
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, management, coworker relations, and workplace environment, but contains no mention of training, learning, development, workshops, or any other L&D keywords.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, suggestions, and work environment, but contains no mention of performance reviews, appraisal, feedback, assessment, goals, KPIs, or any other terms related to Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses salary increase, feeling valued, and positive work environment, with no mention of workforce planning, headcount, resourcing, or any other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        },
+        "Accountability/Responsibility": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, and a positive work environment, but does not mention accountability, responsibility, ownership, or any related concepts defined in the topic.",
+          "excerpt": ""
+        },
+        "Autonomy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords or explicit discussion of autonomy, independence, self‑direction, empowerment, micromanagement, or freedom at work.",
+          "excerpt": ""
+        },
+        "Belonging": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment mentions feeling valued and respected by management and coworkers, but it does not explicitly discuss belonging, inclusion, or being part of the group as defined by the topic.",
+          "excerpt": ""
+        },
+        "Camaraderie": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions feeling valued, respected, and a positive work environment, but it does not explicitly discuss friendship, bonding, or camaraderie as defined by the topic.",
+          "excerpt": ""
+        },
+        "Caring": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment mentions feeling valued and respected and a positive work environment, but it does not contain any explicit references to caring, empathy, compassion, or related keywords needed to identify the main topic of Caring.",
+          "excerpt": ""
+        },
+        "Communication": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment mentions that suggestions/ideas are encouraged, but it does not directly discuss the quality, openness, or transparency of information exchange as defined for the Communication topic.",
+          "excerpt": ""
+        },
+        "Community": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary, feeling valued by management and coworkers, and a positive work environment, but it does not explicitly mention a sense of community, unity, shared culture, or collective identity as defined for the topic.",
+          "excerpt": ""
+        },
+        "CSR": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, workplace culture, and employee satisfaction, but contains no mention of CSR, corporate responsibility, sustainability, community impact, or any related keywords.",
+          "excerpt": ""
+        },
+        "Decision making": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses salary increase, feeling valued, and a positive work environment, but contains no explicit discussion of decision‑making processes, transparency, rationale, or fairness as defined in the topic.",
+          "excerpt": ""
+        },
+        "DEI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, and a positive work environment, but it does not mention any DEI‑related terms such as diversity, equity, inclusion, bias, or representation.",
+          "excerpt": ""
+        },
+        "Delegation": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, encouragement of ideas, and overall work environment, but contains no mention of delegation, assigning tasks, distribution of work, or related keywords.",
+          "excerpt": ""
+        },
+        "Department/Team": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only briefly mentions that the management team and coworkers make the speaker feel valued and respected, which is a short reference to appreciation but does not directly and substantially discuss recognition or appreciation practices within the team or department.",
+          "excerpt": ""
+        },
+        "Employee Engagement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions a salary increase, feeling valued, and a positive work environment, but it does not explicitly discuss enthusiasm, motivation, or other keywords related to employee engagement.",
+          "excerpt": ""
+        },
+        "Employee Loyalty": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment talks about salary increase, feeling valued, and a positive work environment, but it does not mention loyalty, commitment to stay, retention, pride, or any intent to remain with the employer.",
+          "excerpt": ""
+        },
+        "Employee Voice/Decision Making Involvement": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment states \"All suggestions/ideas are encouraged and if possible pursued,\" which directly mentions employee input and participation, matching the definition of Employee Voice/Decision Making Involvement.",
+          "excerpt": "All suggestions/ideas are encouraged and if possible pursued."
+        },
+        "Facilities": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary, management, coworker respect, and general work environment, but contains no mention of facilities, office space, building, or any physical workplace resources as defined in the topic.",
+          "excerpt": ""
+        },
+        "Fairness": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase and positive workplace atmosphere but contains no mention of fairness, impartial treatment, bias, or favoritism, which are required to identify the Fairness topic.",
+          "excerpt": ""
+        },
+        "Flexibility": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, encouragement of ideas, and a positive work environment, but it contains no mention of adaptability, flexible approaches, or an accommodating atmosphere as defined for the Flexibility topic.",
+          "excerpt": ""
+        },
+        "Integrity": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords (integrity, ethics, honesty, principled, ethical conduct) or any explicit discussion of ethical principles or honesty, which are required to identify Integrity as a main topic.",
+          "excerpt": ""
+        },
+        "Job Security": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, and positive work environment, but contains no mention of job security, layoffs, employment stability, or related keywords.",
+          "excerpt": ""
+        },
+        "Meetings": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention meetings, agenda, discussion, frequency, or any related keywords; therefore there is no evidence that the topic of Meetings is a main topic.",
+          "excerpt": ""
+        },
+        "Mission/Vision/Value": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment talks about salary increase, feeling valued, and a positive work environment, but it does not discuss the organization’s purpose, long‑term goals, or guiding principles.",
+          "excerpt": ""
+        },
+        "Networking": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, suggestions, and work environment, but contains no mention of networking, professional connections, or related concepts.",
+          "excerpt": ""
+        },
+        "Physical Safety": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, and a positive work environment, but contains no mention of physical safety, hazards, injury, or related terms.",
+          "excerpt": ""
+        },
+        "Professionalism": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary, feeling valued, suggestion encouragement, and overall work environment, but contains no explicit mention of professionalism, professional conduct, decorum, standards, or related keywords.",
+          "excerpt": ""
+        },
+        "Psychological Safety": {
+          "is_relevant": false,
+          "confidence": 3,
+          "reasoning": "The comment mentions that \"All suggestions/ideas are encouraged and if possible pursued,\" which hints at openness, but it does not explicitly discuss freedom to speak without fear, vulnerability, or emotional security as defined for psychological safety.",
+          "excerpt": ""
+        },
+        "Recognition/Award": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment states that “the management team and my coworkers make me feel valued and respected,” which directly references feeling valued—a keyword for Recognition/Award.",
+          "excerpt": "make me feel valued and respected"
+        },
+        "Respect": {
+          "is_relevant": false,
+          "confidence": 3,
+          "reasoning": "The comment only briefly mentions feeling \"valued and respected\" in one clause, while the focus is on salary increase, suggestion encouragement, and overall positive environment, so respect is not a main topic.",
+          "excerpt": ""
+        },
+        "Social Events/Team Building Activities": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention any social events, team‑building activities, gatherings, outings, or related keywords; it only discusses salary, feeling valued, and overall work environment.",
+          "excerpt": ""
+        },
+        "Support": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions salary increase, feeling valued and respected, and a positive work environment, but it does not mention assistance, guidance, peer support, or any of the listed support keywords.",
+          "excerpt": ""
+        },
+        "Teamwork/Cooperation": {
+          "is_relevant": false,
+          "confidence": 3,
+          "reasoning": "The comment discusses salary increase, feeling valued by management and coworkers, and a positive work environment, but does not explicitly mention teamwork, collaboration, cooperation, or shared effort as a main subject.",
+          "excerpt": ""
+        },
+        "Trust": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued and respected, and a positive work environment, but it does not contain any mention of trust, confidence, reliance, skepticism, mistrust, faith, or trusted relationships as defined for the topic.",
+          "excerpt": ""
+        },
+        "Wellbeing": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, suggestions, and a positive work environment, but does not mention mental or physical health, stress, burnout, fatigue, or any of the wellbeing keywords.",
+          "excerpt": ""
+        },
+        "Work life balance": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, suggestions being encouraged, and a positive work environment, but it contains no mention of work life balance, flexibility, family support, or related keywords.",
+          "excerpt": ""
+        },
+        "Work Location": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary, management, coworker respect, suggestions, and overall work environment, but does not mention work location, remote work, onsite, hybrid, or any related terms.",
+          "excerpt": ""
+        },
+        "Work Schedule": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, feeling valued, suggestions, and overall work environment, but contains no mention of work schedule, working hours, shifts, or related keywords.",
+          "excerpt": ""
+        },
+        "Benefits/Perks": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, management, coworker respect, and work environment, but contains no mention of benefits, perks, insurance, PTO, or any related terms defined for the Benefits/Perks topic.",
+          "excerpt": ""
+        },
+        "Pay": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly states \"My salary was increased $8,000/yearly,\" which directly discusses salary, a keyword for the Pay topic.",
+          "excerpt": "My salary was increased $8,000/yearly."
+        },
+        "Colleagues": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment only briefly mentions coworkers making the employee feel valued, but the primary focus is on salary increase, management, idea encouragement, and overall work environment, not on colleague appreciation as a main topic.",
+          "excerpt": ""
+        },
+        "Customers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses salary, management, coworkers, and work environment, with no mention of customers, clients, or related terms.",
+          "excerpt": ""
+        },
+        "HR Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any mention of HR, human resources, or HR staff, which are required to identify the HR Department as a main topic.",
+          "excerpt": ""
+        },
+        "IT Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary, management, coworkers, suggestions, and overall work environment, but contains no mention of IT, helpdesk, technical support, or any of the defined IT Department keywords.",
+          "excerpt": ""
+        },
+        "Managers": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment states, \"The management team ... make me feel valued and respected,\" which directly references recognition and appreciation from managers as defined in the topic.",
+          "excerpt": "The management team and my coworkers make me feel valued and respected."
+        },
+        "Mentors": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention mentors, mentoring, coaching, guidance, or any related terms; it focuses on salary, management, coworkers, and work environment.",
+          "excerpt": ""
+        },
+        "Senior Leadership": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses salary increase, the management team, coworkers, and work environment, but contains no reference to senior leadership, executives, or recognition by leadership as defined for the topic.",
+          "excerpt": ""
+        },
+        "Trainers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords or discussion of trainers, training staff, instructors, workshops, onboarding, or related concepts described in the topic definition.",
+          "excerpt": ""
+        },
+        "Direct Manager": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses salary increase, overall management team, coworkers, and work environment, but contains no explicit mention of recognition or appreciation from the direct manager.",
+          "excerpt": ""
+        },
+        "Bonus/Incentives": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses a salary increase and positive work environment, but does not mention any bonus, incentive, commission, profit sharing, or other variable pay as defined in the topic.",
+          "excerpt": ""
+        },
+        "Raise": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly states \"My salary was increased $8,000/yearly,\" which directly mentions a permanent increase to regular pay, matching the definition of a raise.",
+          "excerpt": "My salary was increased $8,000/yearly"
+        }
+      }
+    },
+    "stem_polarity": {
+      "People/Department>Colleagues": {
+        "polarity": "Positive",
+        "confidence": 5,
+        "reasoning": "The comment praises coworkers for making the employee feel valued and respected, indicating clear positive sentiment toward colleagues.",
+        "excerpt": "my coworkers make me feel valued and respected"
+      },
+      "Culture/Work Environment>Recognition/Award>Managers": {
+        "polarity": "Positive",
+        "confidence": 5,
+        "reasoning": "The employee praises the management team for making them feel valued and respected, which is clear positive sentiment toward recognition by managers.",
+        "excerpt": "The management team ... make me feel valued and respected"
+      },
+      "Pay/Benefits>Pay>Raise": {
+        "polarity": "Positive",
+        "confidence": 5,
+        "reasoning": "The comment expresses satisfaction with receiving a salary increase, indicating a favorable view of the raise.",
+        "excerpt": "My salary was increased $8,000/yearly"
+      }
+    },
+    "stem_recommendations": {
+      "People/Department>Colleagues": {
+        "has_recommendations": false,
+        "recommendations": []
+      },
+      "Culture/Work Environment>Recognition/Award>Managers": {
+        "has_recommendations": false,
+        "recommendations": []
+      },
+      "Pay/Benefits>Pay>Raise": {
+        "has_recommendations": false,
+        "recommendations": []
+      }
+    }
+  },
+  {
+    "text": "I worked here for 13 years, could not promote. Its a solid company but it has its own outdated culture., Could use an entire revamp.",
+    "classification_result": {
+      "text": "I worked here for 13 years, could not promote. Its a solid company but it has its own outdated culture., Could use an entire revamp.",
+      "classification_paths": [
+        "ROOT>Culture/Work Environment",
+        "ROOT>Job/Work"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion, company culture, and a need for revamp, with no mention of AI, artificial intelligence, or any related keywords.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly states the company \"has its own outdated culture\" and suggests it needs a revamp, directly addressing the organizational culture.",
+          "excerpt": "its own outdated culture"
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention any of the keywords such as IT, technology, software, hardware, digital tools, or any related concepts, so there is no evidence that IT/Tech is a main topic.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly states \"I worked here for 13 years\" and mentions not being promoted, which directly refer to the employee's job and role within the company, matching the Job/Work topic definition.",
+          "excerpt": "I worked here for 13 years, could not promote."
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses personal promotion and company culture but does not explicitly mention or discuss the organization, corporate governance, policy, business, or strategy as defined for the topic.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses tenure, promotion, and company culture, but contains no mention of salary, pay, compensation, benefits, or any related keywords.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses personal promotion and company culture, without mentioning any team, department, colleagues, manager, or similar keywords that define People/Department interactions.",
+          "excerpt": ""
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment contains no mention of training, learning, development, workshops, upskilling, reskilling, certification, e‑learning, courses, or any related terms, so there is no evidence that L&D is a main topic.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment mentions a lack of promotion after many years but does not explicitly discuss performance reviews, appraisal, feedback, assessment, or any other keywords tied to Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses personal promotion history, company culture, and a general need for revamp, with no mention of workforce planning, headcount, or any other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        },
+        "Accountability/Responsibility": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment talks about tenure, lack of promotion, outdated culture, and need for a revamp, but contains no mention of accountability, responsibility, ownership, or follow‑through, which are required for the topic.",
+          "excerpt": ""
+        },
+        "Autonomy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion difficulties, outdated culture, and the need for a revamp, but contains no mention of autonomy, independence, self-direction, empowerment, micromanagement, or freedom at work.",
+          "excerpt": ""
+        },
+        "Belonging": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion, and company culture but contains no mention of belonging, inclusion, acceptance, or related concepts from the topic definition.",
+          "excerpt": ""
+        },
+        "Camaraderie": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords or references to friendship, friends, bonding, or camaraderie; it only discusses tenure, promotion, and company culture.",
+          "excerpt": ""
+        },
+        "Caring": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion difficulty, company culture, and the need for a revamp, with no mention of caring, empathy, compassion, or related keywords.",
+          "excerpt": ""
+        },
+        "Communication": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, company culture, and the need for a revamp, but contains no mention of communication, information flow, or related keywords.",
+          "excerpt": ""
+        },
+        "Community": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the company's outdated culture and promotion issues; it does not discuss a sense of community, unity, shared culture, or collective identity as defined for the Community topic.",
+          "excerpt": ""
+        },
+        "CSR": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment contains no mention of CSR, corporate responsibility, sustainability, or any related keywords; it only discusses promotion, company culture, and a revamp.",
+          "excerpt": ""
+        },
+        "Decision making": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment mentions lack of promotion, outdated culture, and a need for revamp, but does not discuss any decision‑making processes, transparency, consistency, or fairness, which are required to identify Decision making as a main topic.",
+          "excerpt": ""
+        },
+        "DEI": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment does not contain any of the DEI keywords (e.g., DEI, diversity, inclusive, equity, representation, bias, discrimination) nor does it explicitly discuss diversity, equity, or inclusion.",
+          "excerpt": ""
+        },
+        "Delegation": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, outdated culture, and the need for a revamp, but contains no mention of delegation, task assignment, or related keywords.",
+          "excerpt": ""
+        },
+        "Department/Team": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses the company's overall culture and promotion issues but does not mention a team, department, or related group dynamics, which are required for the Department/Team topic.",
+          "excerpt": ""
+        },
+        "Employee Engagement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions tenure, lack of promotion, outdated culture, and a need for a revamp, but contains no words or statements related to engagement, enthusiasm, motivation, or other keywords defining employee engagement.",
+          "excerpt": ""
+        },
+        "Employee Loyalty": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only states the employee worked there for 13 years and mentions promotion issues and culture, but it does not explicitly discuss loyalty, commitment to stay, or retention.",
+          "excerpt": ""
+        },
+        "Employee Voice/Decision Making Involvement": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions tenure, lack of promotion, outdated culture, and a need for revamp, but it does not contain any reference to employee voice, input, decision‑making involvement, opinion, feedback, participation, or suggestions.",
+          "excerpt": ""
+        },
+        "Facilities": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, company culture, and a need for revamp but does not mention any physical workplace elements such as facilities, office space, or amenities.",
+          "excerpt": ""
+        },
+        "Fairness": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment mentions being unable to get a promotion after many years, but does not explicitly discuss fairness, impartiality, bias, or related keywords defined for the Fairness topic.",
+          "excerpt": ""
+        },
+        "Flexibility": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses promotion issues, outdated culture, and a need for revamp, with no mention of adaptability, flexible work approaches, or accommodating atmosphere as defined for Flexibility.",
+          "excerpt": ""
+        },
+        "Integrity": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords (integrity, ethics, honesty, principled, ethical conduct) nor does it discuss ethical principles or honesty, which are required to identify Integrity as a main topic.",
+          "excerpt": ""
+        },
+        "Job Security": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion opportunities, company culture, and a need for revamp, but contains no explicit mention of job security, layoff, employment stability, or related keywords.",
+          "excerpt": ""
+        },
+        "Meetings": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion and company culture but contains no mention of meetings, agenda, or related keywords, so it does not address the Meetings topic.",
+          "excerpt": ""
+        },
+        "Mission/Vision/Value": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses promotion, company culture, and a need for revamp, but contains no mention of mission, vision, values, purpose, or related guiding principles.",
+          "excerpt": ""
+        },
+        "Networking": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions the employee's tenure, lack of promotion, company culture, and need for a revamp, but it contains no explicit mention of networking or any related keywords such as \"networking,\" \"professional connections,\" or \"professional network,\" which are required to qualify as a main topic of Networking.",
+          "excerpt": ""
+        },
+        "Physical Safety": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, company culture, and the need for a revamp, with no mention of physical safety, hazards, injury, or related keywords.",
+          "excerpt": ""
+        },
+        "Professionalism": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, outdated culture, and need for revamp, but contains no explicit mention of professionalism, professional behavior, decorum, standards, punctuality, or professional conduct.",
+          "excerpt": ""
+        },
+        "Psychological Safety": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion difficulty, and company culture but contains no mention of psychological safety, openness, or related keywords.",
+          "excerpt": ""
+        },
+        "Recognition/Award": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses lack of promotion, outdated culture, and need for revamp, with no mention of recognition, appreciation, award, thanks, acknowledgment, gratitude, celebration, or feeling valued.",
+          "excerpt": ""
+        },
+        "Respect": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the keywords (respect, regard, dignity, courtesy, esteem, civility, disrespect) nor does it discuss mutual esteem or regard, which are required to identify Respect as a main topic.",
+          "excerpt": ""
+        },
+        "Social Events/Team Building Activities": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion, and company culture but makes no mention of social events, team‑building activities, gatherings, or any related keywords.",
+          "excerpt": ""
+        },
+        "Support": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion issues, company culture, and the need for a revamp, but contains no mention of helpful colleagues, assistance, guidance, or any form of support as defined in the topic.",
+          "excerpt": ""
+        },
+        "Teamwork/Cooperation": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions tenure, promotion, company culture, and a need for revamp, but contains no reference to teamwork, collaboration, cooperation, or any related concepts.",
+          "excerpt": ""
+        },
+        "Trust": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, company culture, and the need for a revamp, but contains no mention of trust, confidence, reliance, skepticism, or related keywords.",
+          "excerpt": ""
+        },
+        "Wellbeing": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, company culture, and the need for a revamp, without any mention of wellbeing, health, stress, burnout, or related keywords.",
+          "excerpt": ""
+        },
+        "Work life balance": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion difficulty, company culture, and the need for a revamp, but contains no mention of work life balance, balance, boundaries, family support, outside work, or flexibility.",
+          "excerpt": ""
+        },
+        "Work Location": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not mention work location, remote work, onsite, hybrid, telework, or any related terms from the topic definition.",
+          "excerpt": ""
+        },
+        "Work Schedule": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion opportunities and company culture but contains no mention of work schedule, working hours, shifts, or related concepts.",
+          "excerpt": ""
+        },
+        "Job satisfaction": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion opportunities, company culture, and the need for a revamp, but it contains no mention of job satisfaction, fulfillment, enjoyment, or related keywords.",
+          "excerpt": ""
+        },
+        "Project": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion, company culture, and a revamp, but contains no mention of project, project work, or related keywords, so it does not discuss the target topic.",
+          "excerpt": ""
+        },
+        "Role Clarity": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion, company culture, and the need for a revamp, but contains no mention of role clarity, responsibilities, expectations, or related keywords.",
+          "excerpt": ""
+        },
+        "Tools/Resources": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion, and company culture but contains no mention of tools, resources, or related concepts defined in the topic.",
+          "excerpt": ""
+        },
+        "Workflow": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses promotion opportunities, company culture, and the need for a revamp, with no mention of workflow, process steps, or related keywords.",
+          "excerpt": ""
+        },
+        "Workload": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses tenure, promotion, and company culture but contains no mention of workload, task volume, or related keywords.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": null,
+    "stem_recommendations": null
+  },
+  {
+    "text": "1  SAP S4 HANA2  New methodologies like AGILE3  New trends in CP and LS (like digital commerce, etc)",
+    "classification_result": {
+      "text": "1  SAP S4 HANA2  New methodologies like AGILE3  New trends in CP and LS (like digital commerce, etc)",
+      "classification_paths": [
+        "ROOT>IT/Tech",
+        "ROOT>IT/Tech>Software/System",
+        "ROOT>IT/Tech>Digital Transformation/IT Strategy"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment does not contain any of the AI keywords (e.g., AI, artificial intelligence, machine learning, automation, etc.) and makes no mention of AI-related experiences.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions SAP S4 HANA, Agile methodologies, and new trends in CP and LS, with no reference to culture, work environment, or any related keywords.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly mentions \"SAP S4 HANA\" and \"digital commerce\", which are software and digital tools, directly aligning with the IT/Tech topic definition.",
+          "excerpt": "SAP S4 HANA...digital commerce"
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses SAP S4 HANA, Agile methodologies, and trends in CP and LS, with no mention of job, work, tasks, responsibilities, or other concepts from the Job/Work topic definition.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment discusses SAP S4 HANA, Agile methodologies, and new trends in CP and LS, but does not mention any of the keywords or concepts related to Organization such as corporate, governance, policy, business, or strategy.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions SAP S4 HANA, AGILE methodologies, and trends in CP and LS, with no reference to salary, pay, compensation, or any related keywords.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions SAP S4 HANA, new methodologies like AGILE, and new trends in CP and LS, with no reference to a team, department, colleagues, manager, or other People/Department keywords.",
+          "excerpt": ""
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions SAP S4 HANA, Agile methodologies, and new trends in CP and LS, but contains no references to training, learning, development, workshops, or any other keywords associated with L&D.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions SAP S4 HANA, Agile methodologies, and new trends in CP and LS, with no reference to performance reviews, appraisal, feedback, assessment, or any related keywords.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions SAP S4 HANA, Agile methodologies, and digital commerce trends, with no reference to workforce planning, headcount, or any other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        },
+        "Cybersecurity": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions SAP S4 HANA, agile methodologies, and digital commerce trends, but contains none of the keywords or concepts related to cybersecurity such as \"cybersecurity\", \"data breach\", \"phishing\", \"malware\", etc.",
+          "excerpt": ""
+        },
+        "Hardware": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions SAP S4 HANA, Agile methodologies, and digital commerce trends, but contains no hardware-related keywords such as \"hardware,\" \"laptop,\" \"device,\" etc., nor does it discuss physical technology devices.",
+          "excerpt": ""
+        },
+        "Infrastructure": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions SAP S4 HANA, Agile, and new trends in CP and LS, but contains no explicit reference to infrastructure-related terms such as 'infrastructure', 'server', 'data center', 'downtime', 'uptime', 'network backbone', or 'power supply'.",
+          "excerpt": ""
+        },
+        "Network Access": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions SAP S4 HANA, Agile methodologies, and digital commerce trends, but there is no reference to network, internet access, Wi‑Fi, connectivity, or any related keywords.",
+          "excerpt": ""
+        },
+        "Software/System": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment explicitly mentions \"SAP S4 HANA\", which is a software platform, fitting the topic definition of feedback on applications and systems.",
+          "excerpt": "SAP S4 HANA"
+        },
+        "Digital Transformation/IT Strategy": {
+          "is_relevant": true,
+          "confidence": 4,
+          "reasoning": "The comment mentions \"SAP S4 HANA\" (a major system implementation) and \"New methodologies like AGILE\" as well as \"digital commerce,\" all of which are concrete references to technology initiatives and digital transformation.",
+          "excerpt": "SAP S4 HANA ... New methodologies like AGILE ... digital commerce"
+        },
+        "VPN": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment mentions SAP S4 HANA, AGILE, and digital commerce trends, but contains no mention of VPN, remote access, or related keywords.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": {
+      "IT/Tech>Software/System": {
+        "polarity": "Neutral",
+        "confidence": 4,
+        "reasoning": "The comment simply lists software and methodology topics without expressing any positive or negative sentiment toward them.",
+        "excerpt": "SAP S4 HANA  New methodologies like AGILE  New trends in CP and LS (like digital commerce, etc)"
+      },
+      "IT/Tech>Digital Transformation/IT Strategy": {
+        "polarity": "Neutral",
+        "confidence": 4,
+        "reasoning": "The comment merely lists topics (SAP S4 HANA, Agile, new trends) without any evaluative language, making it a factual description.",
+        "excerpt": "SAP S4 HANA ... New methodologies like AGILE ... New trends in CP and LS (like digital commerce, etc)"
+      }
+    },
+    "stem_recommendations": {
+      "IT/Tech>Software/System": {
+        "has_recommendations": false,
+        "recommendations": []
+      },
+      "IT/Tech>Digital Transformation/IT Strategy": {
+        "has_recommendations": false,
+        "recommendations": []
+      }
+    }
+  },
+  {
+    "text": "My manager is the VERY BEST I have ever worked for, SERIOUSLY!! She is great because I know if I ever need her for \"anything\" she will be there & never make me feel \"stupid\" or afraid to ask her or confide in her. If I have an issue with work or a question, she will get me the answer one way or another. She is extremely knowledgeable about her field. She is always willing to help if you need her. I started as a Temporary employee & during that time she waould let me learn as much as i could just to be better prepared to apply for a full time position. She definitely encouraged me to keep going. i also am thankful for her because earlier this year I almost lost my husband due to illness & my boss was so supportive & compassionate and totally understood what I was going through. She was sincerely concerned & I knew she was there for me if I needed her. i only hope that i can continue to work for her & with her until I retire & that is many many years from now. She is the BEST!!!!",
+    "classification_result": {
+      "text": "My manager is the VERY BEST I have ever worked for, SERIOUSLY!! She is great because I know if I ever need her for \"anything\" she will be there & never make me feel \"stupid\" or afraid to ask her or confide in her. If I have an issue with work or a question, she will get me the answer one way or another. She is extremely knowledgeable about her field. She is always willing to help if you need her. I started as a Temporary employee & during that time she waould let me learn as much as i could just to be better prepared to apply for a full time position. She definitely encouraged me to keep going. i also am thankful for her because earlier this year I almost lost my husband due to illness & my boss was so supportive & compassionate and totally understood what I was going through. She was sincerely concerned & I knew she was there for me if I needed her. i only hope that i can continue to work for her & with her until I retire & that is many many years from now. She is the BEST!!!!",
+      "classification_paths": [
+        "ROOT>People/Department",
+        "ROOT>People/Department>Managers",
+        "ROOT>People/Department>Managers>Direct Manager"
+      ],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses the manager's support and leadership, with no mention of AI, artificial intelligence, or any related keywords.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment exclusively describes personal experiences with a single manager's support and compassion, without mentioning organizational culture, values, workplace atmosphere, or broader team dynamics.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment solely discusses the manager's support, mentorship, and personal compassion, without mentioning any information technology, digital tools, software, hardware, or related technical topics.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment primarily discusses the manager's support and personal encouragement, with only brief mentions of \"issue with work\" or being a \"Temporary employee,\" but does not directly discuss daily tasks, responsibilities, or work content.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment focuses solely on the manager's personal support and mentorship, with no mention of organization, corporate governance, policy, business strategy, or any broader company-level topic as defined.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses the manager's support and personal experiences, with no mention of salary, compensation, benefits, or any related keywords.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment extensively discusses the manager’s support, interaction, and relationship with the employee, which directly matches the People/Department topic of interactions within a team or department.",
+          "excerpt": "My manager is the VERY BEST I have ever worked for... she will be there & never make me feel \"stupid\" or afraid to ask her or confide in her... she was so supportive & compassionate and totally understood what I was going through."
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 4,
+          "reasoning": "The comment praises the manager’s support and personal learning opportunities but does not mention any training, workshops, courses, or other L&D programs as defined in the topic.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses the manager's personal support, kindness, and mentorship, but contains no mention of performance reviews, appraisal, feedback, assessment, goals, or any other terms related to Performance Management.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only praises the manager and describes personal support and temporary‑to‑full‑time experience; it does not discuss workforce planning, headcount, role fit, or any other elements of the Workforce Strategy definition.",
+          "excerpt": ""
+        },
+        "Colleagues": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses the manager’s support and behavior but does not mention any colleague, peer, coworker, teammate, or fellow employee, which are required for the 'Colleagues' topic.",
+          "excerpt": ""
+        },
+        "Customers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only discusses the manager's support and personal interactions, with no mention of customers, clients, or related keywords.",
+          "excerpt": ""
+        },
+        "HR Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment exclusively discusses the manager’s support and does not mention HR, human resources, or HR staff, which are required to satisfy the topic definition.",
+          "excerpt": ""
+        },
+        "IT Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment solely discusses the manager's support and personal experiences, with no mention of IT staff, services, or related keywords.",
+          "excerpt": ""
+        },
+        "Managers": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly discusses the employee’s manager in detail, describing her support, knowledge, and relationship, which directly matches the topic definition of relationships with a direct supervisor.",
+          "excerpt": "My manager is the VERY BEST I have ever worked for, SERIOUSLY!! ... she was so supportive & compassionate and totally understood what I was going through. ... I only hope that i can continue to work for her & with her until I retire"
+        },
+        "Mentors": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment exclusively praises the manager and describes the manager's support; it does not mention a mentor, mentoring, coach, or any non‑manager guidance, which are required for the Mentors topic.",
+          "excerpt": ""
+        },
+        "Senior Leadership": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment discusses the respondent's direct manager and the support received, but it contains no mention of senior leadership, executives, C‑suite, CEO, or any related keywords.",
+          "excerpt": ""
+        },
+        "Trainers": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment exclusively discusses the manager's support and mentorship, with no mention of a trainer, instructor, training staff, or any training session, which are required to satisfy the 'Trainers' topic.",
+          "excerpt": ""
+        },
+        "Direct Manager": {
+          "is_relevant": true,
+          "confidence": 5,
+          "reasoning": "The comment explicitly discusses \"My manager\" in detail, describing her support, knowledge, and supervisory actions, which directly aligns with the topic definition of a direct manager.",
+          "excerpt": "My manager is the VERY BEST I have ever worked for, SERIOUSLY!!"
+        }
+      }
+    },
+    "stem_polarity": {
+      "People/Department>Managers>Direct Manager": {
+        "polarity": "Positive",
+        "confidence": 5,
+        "reasoning": "The comment repeatedly praises the direct manager, describing her as the best, supportive, knowledgeable, and compassionate with no negative remarks.",
+        "excerpt": "My manager is the VERY BEST I have ever worked for... She is great because I know if I ever need her... She was sincerely concerned & I knew she was there for me... She is the BEST!!!!"
+      }
+    },
+    "stem_recommendations": {
+      "People/Department>Managers>Direct Manager": {
+        "has_recommendations": false,
+        "recommendations": []
+      }
+    }
+  },
+  {
+    "text": "The training was very complete",
+    "classification_result": {
+      "text": "The training was very complete",
+      "classification_paths": [],
+      "node_results": {
+        "AI": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states \"The training was very complete\" and contains no mention of AI, artificial intelligence, or any related keywords defined for the topic.",
+          "excerpt": ""
+        },
+        "Culture/Work Environment": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions that the training was \"very complete\" and contains no reference to culture, work environment, or any related keywords.",
+          "excerpt": ""
+        },
+        "IT/Tech": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states \"The training was very complete\" and does not mention any information technology, digital tools, or related concepts from the IT/Tech topic definition.",
+          "excerpt": ""
+        },
+        "Job/Work": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states \"The training was very complete\" and contains no mention of job, work, tasks, responsibilities, or any related concepts described in the Job/Work topic definition.",
+          "excerpt": ""
+        },
+        "Organization": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training being complete and contains no reference to organization, corporate, governance, policy, business, or strategy.",
+          "excerpt": ""
+        },
+        "Pay/Benefits": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states \"The training was very complete\" and contains no reference to salary, pay, compensation, benefits, or any related keywords, so it does not discuss the Pay/Benefits topic.",
+          "excerpt": ""
+        },
+        "People/Department": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only mentions the training being complete and contains no references to team, department, colleagues, manager, or any interpersonal relationships.",
+          "excerpt": ""
+        },
+        "L&D": {
+          "is_relevant": false,
+          "confidence": 2,
+          "reasoning": "The comment only briefly mentions \"training\" without any substantial discussion of learning or development programs, which is insufficient to consider L&D a main topic.",
+          "excerpt": ""
+        },
+        "Performance Management": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only says \"The training was very complete\" and contains no mention of performance reviews, appraisal, feedback, assessment, or any related keywords.",
+          "excerpt": ""
+        },
+        "Workforce Strategy": {
+          "is_relevant": false,
+          "confidence": 5,
+          "reasoning": "The comment only states 'The training was very complete' and contains no reference to workforce planning, headcount, or any other keywords related to Workforce Strategy.",
+          "excerpt": ""
+        }
+      }
+    },
+    "stem_polarity": null,
+    "stem_recommendations": null
+  }
+]

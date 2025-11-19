@@ -7,7 +7,7 @@ from .capabilities import (
     CapabilityRegistry,
     create_default_registry,
 )
-from .capabilities.classification import (  # ← UPDATED
+from .capabilities.classification import (
     BatchClassificationResult,
     BFSClassificationCapability,
     ClassificationCapability,

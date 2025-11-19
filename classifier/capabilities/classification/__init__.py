@@ -2,10 +2,17 @@
 Classification detection capability.
 """
 
+from bundled import BundledClassificationCapability
+
+from .base import ClassificationCapability
 from .bfs import BFSClassificationCapability
-from .capability import ClassificationCapability
-from .models import BatchClassificationResult, ClassificationOutput, SingleClassificationResult
-from .prompts import standard_classification_prompt
+from .models import (
+    BatchClassificationResult,
+    BundledClassificationResult,
+    ClassificationOutput,
+    SingleClassificationResult,
+)
+from .prompts import bundled_classification_prompt, standard_classification_prompt
 
 __all__ = [
     "ClassificationCapability",
@@ -14,4 +21,7 @@ __all__ = [
     "standard_classification_prompt",
     "BFSClassificationCapability",
     "BatchClassificationResult",
+    "BundledClassificationCapability",
+    "bundled_classification_prompt",
+    "BundledClassificationResult",
 ]
