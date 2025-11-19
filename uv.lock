@@ -1207,8 +1207,10 @@ dependencies = [
     { name = "aiohttp" },
     { name = "openai" },
     { name = "pandas" },
+    { name = "pydantic" },
     { name = "pyyaml" },
     { name = "requests" },
+    { name = "tqdm" },
     { name = "uvicorn" },
     { name = "vllm" },
 ]
@@ -1218,8 +1220,10 @@ requires-dist = [
     { name = "aiohttp", specifier = ">=3.13.2" },
     { name = "openai", specifier = ">=2.8.0" },
     { name = "pandas", specifier = ">=2.3.3" },
+    { name = "pydantic", specifier = ">=2.12.4" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "requests", specifier = ">=2.32.5" },
+    { name = "tqdm", specifier = ">=4.67.1" },
     { name = "uvicorn", specifier = ">=0.38.0" },
     { name = "vllm", specifier = "==0.10.2" },
 ]

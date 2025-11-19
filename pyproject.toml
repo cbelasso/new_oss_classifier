@@ -12,5 +12,6 @@ dependencies = [
     "vllm==0.10.2",
     "uvicorn>=0.38.0",
     "pandas>=2.3.3",
-
+    "pydantic>=2.12.4",
+    "tqdm>=4.67.1",
 ]

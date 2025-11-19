@@ -1,19 +1,20 @@
 """
-Enhanced VLLM Server for GPT-OSS with Multi-Instance Support
+Production-Ready VLLM Server Manager with Multi-Instance Support
 
-Improvements:
-- Support for instance IDs (for running multiple servers)
-- Configurable ports and GPU allocation
-- Better integration with VLLMServerManager
-- Organized log and PID files in hidden directory
-- Cleaner code structure and error handling
+Features:
+- Automatic stale PID cleanup
+- Port availability checking
+- GPU availability validation
+- Robust error handling
+- Clean multi-instance support
+- Automatic server restart capability
 """
 
 import asyncio
-import json
 import logging
 import os
 from pathlib import Path
+import socket
 import subprocess
 import sys
 import time
@@ -25,7 +26,6 @@ import requests
 
 # Logging setup
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-# Suppress OpenAI HTTP logging
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("openai").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
@@ -37,13 +37,63 @@ DEFAULT_VLLM_PORT = 9001
 DEFAULT_GPU_MEMORY_UTILIZATION = 0.9
 DEFAULT_TENSOR_PARALLEL_SIZE = 2
 DEFAULT_MAX_MODEL_LEN = 65536
-DEFAULT_MAX_TOKENS = 50000
 DEFAULT_DTYPE = "bfloat16"
 DEFAULT_MAX_CONCURRENT = 5
-DEFAULT_STARTUP_TIMEOUT = 180
+DEFAULT_STARTUP_TIMEOUT = 300  # Increased for large models
 
-# Directory for storing server files
-VLLM_DATA_DIR = Path.home() / ".vllm_servers"
+VLLM_DATA_DIR = Path.cwd() / ".vllm_servers"
+
+
+# ============================================================================
+# Utility Functions
+# ============================================================================
+
+
+def is_port_available(port: int) -> bool:
+    """Check if a port is available."""
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind(("", port))
+            return True
+    except OSError:
+        return False
+
+
+def check_gpu_available(gpu_id: int) -> bool:
+    """Check if a GPU is available."""
+    try:
+        result = subprocess.run(
+            ["nvidia-smi", "-i", str(gpu_id), "--query-gpu=name", "--format=csv,noheader"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        return result.returncode == 0
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        return False
+
+
+def get_gpu_memory_usage(gpu_id: int) -> Optional[float]:
+    """Get GPU memory usage percentage."""
+    try:
+        result = subprocess.run(
+            [
+                "nvidia-smi",
+                "-i",
+                str(gpu_id),
+                "--query-gpu=memory.used,memory.total",
+                "--format=csv,noheader,nounits",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if result.returncode == 0:
+            used, total = map(float, result.stdout.strip().split(","))
+            return (used / total) * 100
+    except Exception:
+        pass
+    return None
 
 
 # ============================================================================
@@ -71,7 +121,7 @@ class ServerConfig:
         self.model_name = model_name
         self.host = host
         self.port = port
-        self.gpu_ids = gpu_ids or [0, 1]
+        self.gpu_ids = gpu_ids or [7, 6]  # Default high-end GPUs
         self.tensor_parallel_size = tensor_parallel_size
         self.gpu_memory_utilization = gpu_memory_utilization
         self.max_model_len = max_model_len
@@ -87,6 +137,10 @@ class ServerConfig:
                 f"Number of GPU IDs ({len(self.gpu_ids)}) must match "
                 f"tensor_parallel_size ({self.tensor_parallel_size})"
             )
+
+        # Validate port range
+        if not (1024 <= self.port <= 65535):
+            raise ValueError(f"Port {self.port} out of valid range (1024-65535)")
 
     def _ensure_data_dir(self):
         """Ensure the data directory exists."""
@@ -109,17 +163,14 @@ class ServerConfig:
 
     @property
     def pid_file(self) -> Path:
-        """Get PID file path for this instance."""
         return self.instance_dir / "server.pid"
 
     @property
     def stdout_log(self) -> Path:
-        """Get stdout log path for this instance."""
         return self.instance_dir / "stdout.log"
 
     @property
     def stderr_log(self) -> Path:
-        """Get stderr log path for this instance."""
         return self.instance_dir / "stderr.log"
 
 
@@ -129,22 +180,40 @@ class ServerConfig:
 
 
 class VLLMServer:
-    """Enhanced VLLM server manager with instance support."""
+    """Production-ready VLLM server manager."""
 
     def __init__(self, config: ServerConfig):
         """Initialize VLLM server."""
         self.config = config
         self.process: Optional[subprocess.Popen] = None
 
-    def start(self) -> Optional[subprocess.Popen]:
-        """Start the VLLM server."""
-        if self._is_already_running():
-            logger.warning(
-                f"Server instance {self.config.instance_id} appears to be already running. "
-                f"Check status or stop the existing instance first."
-            )
-            return None
+    def start(self, force_restart: bool = False) -> bool:
+        """
+        Start the VLLM server.
 
+        Args:
+            force_restart: If True, stop existing server before starting
+
+        Returns:
+            True if server started successfully, False otherwise
+        """
+        # Check for existing server
+        if self._is_server_running():
+            if force_restart:
+                logger.info("Force restart requested. Stopping existing server...")
+                self.stop()
+            else:
+                logger.warning(
+                    f"Server instance {self.config.instance_id} is already running. "
+                    f"Use --force to restart."
+                )
+                return False
+
+        # Pre-flight checks
+        if not self._preflight_checks():
+            return False
+
+        # Start server
         command = self._build_command()
         server_env = self._build_environment()
 
@@ -154,68 +223,174 @@ class VLLMServer:
             self.process = self._spawn_process(command, server_env)
             self._save_pid()
             self._log_success()
-            return self.process
 
-        except FileNotFoundError:
-            logger.error("Could not find 'python' or vLLM modules. Ensure vLLM is installed.")
-            return None
+            # Wait for server to be ready
+            if self.wait_for_ready():
+                logger.info("✓ Server is ready and accepting requests!")
+                return True
+            else:
+                logger.error("✗ Server failed to become ready")
+                self.stop()
+                return False
+
         except Exception as e:
             logger.error(f"Failed to start VLLM server: {e}")
-            self._log_exception()
-            return None
+            self._cleanup_after_failure()
+            return False
 
-    def stop(self):
-        """Stop the VLLM server."""
+    def stop(self) -> bool:
+        """
+        Stop the VLLM server.
+
+        Returns:
+            True if server was stopped, False if not running
+        """
         pid = self._read_pid()
-        if pid is None:
-            logger.info(
-                f"No PID file found for instance {self.config.instance_id}. "
-                "Server is not running."
-            )
-            return
 
+        if pid is None:
+            logger.info(f"No PID file found for instance {self.config.instance_id}")
+            return False
+
+        if not self._is_process_alive(pid):
+            logger.info(f"Process {pid} not running. Cleaning up stale PID file.")
+            self._cleanup_pid_file()
+            return False
+
+        logger.info(f"Stopping server instance {self.config.instance_id} (PID {pid})...")
         self._terminate_process(pid)
         self._cleanup_pid_file()
+        logger.info("✓ Server stopped successfully")
+        return True
+
+    def restart(self) -> bool:
+        """Restart the server."""
+        logger.info(f"Restarting server instance {self.config.instance_id}...")
+        self.stop()
+        time.sleep(2)
+        return self.start()
 
     def wait_for_ready(self, timeout: int = DEFAULT_STARTUP_TIMEOUT) -> bool:
         """Wait for the server to be ready."""
-        url = f"http://{self.config.host}:{self.config.port}/v1/models"
+        health_url = f"http://{self.config.host}:{self.config.port}/health"
+        models_url = f"http://{self.config.host}:{self.config.port}/v1/models"
+
         logger.info(
-            f"Waiting for server instance {self.config.instance_id} "
-            f"at {url} to be ready (timeout: {timeout}s)..."
+            f"Waiting for server instance {self.config.instance_id} to be ready "
+            f"(timeout: {timeout}s)..."
         )
 
         start_time = time.time()
+        last_log = 0
+
         while time.time() - start_time < timeout:
-            if self._check_health(url):
-                logger.info(f"Server instance {self.config.instance_id} is ready!")
+            elapsed = int(time.time() - start_time)
+
+            # Log progress every 10 seconds
+            if elapsed - last_log >= 10:
+                logger.info(f"  Still waiting... ({elapsed}s elapsed)")
+                last_log = elapsed
+
+            # Try health endpoint first, then models endpoint
+            if self._check_health(health_url) or self._check_health(models_url):
+                logger.info(f"✓ Server ready after {elapsed}s")
                 return True
+
             time.sleep(2)
 
-        self._log_startup_failure(timeout)
+        logger.error(f"✗ Server not ready after {timeout}s")
+        self._print_error_logs()
         return False
 
     def status(self) -> dict:
-        """Get server status."""
+        """Get detailed server status."""
         pid = self._read_pid()
         is_running = self._is_process_alive(pid) if pid else False
 
-        return {
+        status = {
             "instance_id": self.config.instance_id,
+            "model": self.config.model_name,
             "port": self.config.port,
             "url": self.config.url,
             "gpu_ids": self.config.gpu_ids,
-            "instance_dir": str(self.config.instance_dir),
-            "pid_file": str(self.config.pid_file),
             "is_running": is_running,
             "pid": pid,
+            "data_dir": str(self.config.instance_dir),
         }
 
-    # Private helper methods
+        # Add GPU info if running
+        if is_running:
+            status["gpu_memory"] = {}
+            for gpu_id in self.config.gpu_ids:
+                usage = get_gpu_memory_usage(gpu_id)
+                if usage is not None:
+                    status["gpu_memory"][f"GPU {gpu_id}"] = f"{usage:.1f}%"
 
-    def _is_already_running(self) -> bool:
-        """Check if server is already running."""
-        return self.config.pid_file.exists()
+        return status
+
+    # ========================================================================
+    # Private Methods - Preflight Checks
+    # ========================================================================
+
+    def _preflight_checks(self) -> bool:
+        """Run pre-flight checks before starting server."""
+        logger.info("Running pre-flight checks...")
+
+        # Check port availability
+        if not is_port_available(self.config.port):
+            logger.error(f"✗ Port {self.config.port} is already in use")
+            logger.info(f"  Try: lsof -i :{self.config.port}")
+            return False
+        logger.info(f"✓ Port {self.config.port} is available")
+
+        # Check GPU availability
+        for gpu_id in self.config.gpu_ids:
+            if not check_gpu_available(gpu_id):
+                logger.error(f"✗ GPU {gpu_id} is not available")
+                logger.info("  Try: nvidia-smi")
+                return False
+
+            usage = get_gpu_memory_usage(gpu_id)
+            if usage is not None:
+                logger.info(f"✓ GPU {gpu_id} available (memory: {usage:.1f}% used)")
+            else:
+                logger.info(f"✓ GPU {gpu_id} available")
+
+        # Check if vLLM is installed
+        try:
+            result = subprocess.run(
+                ["python", "-c", "import vllm"],
+                capture_output=True,
+                timeout=5,
+            )
+            if result.returncode != 0:
+                logger.error("✗ vLLM is not installed")
+                logger.info("  Install: pip install vllm")
+                return False
+            logger.info("✓ vLLM is installed")
+        except Exception:
+            logger.error("✗ Could not verify vLLM installation")
+            return False
+
+        logger.info("✓ All pre-flight checks passed")
+        return True
+
+    def _is_server_running(self) -> bool:
+        """Check if server is actually running (not just PID file exists)."""
+        if not self.config.pid_file.exists():
+            return False
+
+        pid = self._read_pid()
+        if pid and self._is_process_alive(pid):
+            return True
+
+        # Stale PID file - clean it up
+        logger.info("Found stale PID file, cleaning up...")
+        self._cleanup_pid_file()
+        return False
+
+    # ========================================================================
+    # Private Methods - Process Management
+    # ========================================================================
 
     def _build_command(self) -> List[str]:
         """Build the vLLM server command."""
@@ -238,15 +413,6 @@ class VLLMServer:
         server_env["CUDA_VISIBLE_DEVICES"] = self.config.cuda_visible_devices
         return server_env
 
-    def _log_startup_info(self, command: List[str]):
-        """Log startup information."""
-        logger.info(f"Starting VLLM Server Instance {self.config.instance_id}:")
-        logger.info(f"  Model: {self.config.model_name}")
-        logger.info(f"  Port: {self.config.port}")
-        logger.info(f"  GPUs: {self.config.cuda_visible_devices}")
-        logger.info(f"  Data Dir: {self.config.instance_dir}")
-        logger.info(f"  Command: {' '.join(command)}")
-
     def _spawn_process(self, command: List[str], env: dict) -> subprocess.Popen:
         """Spawn the server process."""
         with (
@@ -266,20 +432,6 @@ class VLLMServer:
         with open(self.config.pid_file, "w") as f:
             f.write(str(self.process.pid))
 
-    def _log_success(self):
-        """Log successful startup."""
-        logger.info(
-            f"Server instance {self.config.instance_id} started with PID {self.process.pid}"
-        )
-        logger.info(f"  PID file: {self.config.pid_file}")
-        logger.info(f"  Logs: {self.config.stdout_log}, {self.config.stderr_log}")
-
-    def _log_exception(self):
-        """Log exception details."""
-        import traceback
-
-        logger.error(traceback.format_exc())
-
     def _read_pid(self) -> Optional[int]:
         """Read PID from file."""
         if not self.config.pid_file.exists():
@@ -289,7 +441,7 @@ class VLLMServer:
             with open(self.config.pid_file, "r") as f:
                 return int(f.read().strip())
         except Exception as e:
-            logger.error(f"Could not read PID from {self.config.pid_file}: {e}")
+            logger.warning(f"Could not read PID from {self.config.pid_file}: {e}")
             return None
 
     def _is_process_alive(self, pid: int) -> bool:
@@ -297,66 +449,101 @@ class VLLMServer:
         try:
             os.kill(pid, 0)
             return True
-        except OSError:
+        except (OSError, ProcessLookupError):
             return False
 
     def _terminate_process(self, pid: int):
         """Terminate a process gracefully, then forcefully if needed."""
         try:
+            # Try graceful shutdown
             os.kill(pid, 15)  # SIGTERM
-            logger.info(
-                f"Sent SIGTERM to server instance {self.config.instance_id} (PID {pid}). "
-                "Waiting for shutdown..."
-            )
-            time.sleep(3)
+            logger.info(f"  Sent SIGTERM to PID {pid}, waiting...")
 
-            # Check if still alive
-            if self._is_process_alive(pid):
-                logger.warning(f"Process PID {pid} still alive. Sending SIGKILL.")
-                os.kill(pid, 9)
+            # Wait up to 10 seconds for graceful shutdown
+            for _ in range(10):
                 time.sleep(1)
-            else:
-                logger.info(f"Server instance {self.config.instance_id} terminated.")
+                if not self._is_process_alive(pid):
+                    logger.info("  Process terminated gracefully")
+                    return
+
+            # Force kill if still alive
+            if self._is_process_alive(pid):
+                logger.warning("  Process still alive, sending SIGKILL...")
+                os.kill(pid, 9)
+                time.sleep(2)
+
+                if self._is_process_alive(pid):
+                    logger.error(f"  Failed to kill process {pid}")
+                else:
+                    logger.info("  Process forcefully terminated")
 
         except ProcessLookupError:
-            logger.warning(f"Process with PID {pid} not found. Already stopped?")
+            logger.info(f"  Process {pid} already terminated")
         except Exception as e:
-            logger.error(f"Error killing process {pid}: {e}")
+            logger.error(f"  Error terminating process {pid}: {e}")
 
     def _cleanup_pid_file(self):
         """Remove PID file."""
         try:
-            self.config.pid_file.unlink()
-            logger.info(f"Removed PID file {self.config.pid_file}")
-        except OSError:
-            pass
+            if self.config.pid_file.exists():
+                self.config.pid_file.unlink()
+        except Exception as e:
+            logger.warning(f"Could not remove PID file: {e}")
+
+    def _cleanup_after_failure(self):
+        """Clean up after a failed start."""
+        self._cleanup_pid_file()
+        if self.process:
+            try:
+                self.process.terminate()
+                self.process.wait(timeout=5)
+            except Exception:
+                pass
+
+    # ========================================================================
+    # Private Methods - Health Checks & Logging
+    # ========================================================================
 
     def _check_health(self, url: str) -> bool:
         """Check if server is responding."""
         try:
-            response = requests.get(url, timeout=10)
+            response = requests.get(url, timeout=5)
             return response.status_code == 200
         except requests.exceptions.RequestException:
             return False
 
-    def _log_startup_failure(self, timeout: int):
-        """Log startup failure and print recent logs."""
-        logger.error(
-            f"Server instance {self.config.instance_id} not ready "
-            f"after {timeout} seconds. Check logs:\n"
-            f"  stdout: {self.config.stdout_log}\n"
-            f"  stderr: {self.config.stderr_log}"
-        )
+    def _log_startup_info(self, command: List[str]):
+        """Log startup information."""
+        logger.info("=" * 70)
+        logger.info(f"Starting VLLM Server Instance {self.config.instance_id}")
+        logger.info("=" * 70)
+        logger.info(f"  Model: {self.config.model_name}")
+        logger.info(f"  Port: {self.config.port}")
+        logger.info(f"  GPUs: {self.config.cuda_visible_devices}")
+        logger.info(f"  Tensor Parallel: {self.config.tensor_parallel_size}")
+        logger.info(f"  Max Model Length: {self.config.max_model_len}")
+        logger.info(f"  Data Dir: {self.config.instance_dir}")
+        logger.info("=" * 70)
 
-        # Print last 50 lines of stderr for debugging
+    def _log_success(self):
+        """Log successful startup."""
+        logger.info(f"✓ Server process started with PID {self.process.pid}")
+        logger.info(f"  Logs: {self.config.stderr_log}")
+
+    def _print_error_logs(self, lines: int = 30):
+        """Print recent error logs."""
         try:
-            with open(self.config.stderr_log, "r") as f:
-                lines = f.readlines()
-                if lines:
-                    logger.error("Last 50 lines of stderr:")
-                    logger.error("".join(lines[-50:]))
+            if self.config.stderr_log.exists():
+                with open(self.config.stderr_log, "r") as f:
+                    log_lines = f.readlines()
+                    if log_lines:
+                        logger.error(f"\nLast {lines} lines from stderr:")
+                        logger.error("=" * 70)
+                        for line in log_lines[-lines:]:
+                            logger.error(line.rstrip())
+                        logger.error("=" * 70)
         except Exception as e:
-            logger.error(f"Could not read stderr log: {e}")
+            logger.error(f"Could not read error logs: {e}")
 
 
 # ============================================================================
@@ -384,22 +571,17 @@ async def run_single_inference(
         if hasattr(response, "output_parsed") and isinstance(
             response.output_parsed, schema_class
         ):
-            result_text = response.output_parsed
-
             return {
                 "prompt_index": prompt_index,
                 "success": True,
-                "result": result_text.model_dump(),
+                "result": response.output_parsed.model_dump(),
             }
         else:
-            logger.warning(f"Prompt {prompt_index}: Could not reliably access 'output_parsed'")
             return {
                 "prompt_index": prompt_index,
                 "success": False,
                 "error": "Could not parse output",
-                "raw_response": (
-                    response.model_dump() if hasattr(response, "model_dump") else str(response)
-                ),
+                "raw_response": str(response),
             }
 
     except Exception as e:
@@ -411,86 +593,42 @@ async def run_single_inference(
         }
 
 
-async def run_inference_from_list(
+async def run_batch_inference(
     prompts: List[str],
     schema_class: type[BaseModel],
-    model_name: str = None,
-    output_file: str | None = None,
+    server_url: str,
+    model_name: str = DEFAULT_MODEL_NAME,
     max_concurrent: int = DEFAULT_MAX_CONCURRENT,
-    server_url: str = None,
-):
-    """Run inference requests against the VLLM server for a list of prompts."""
+) -> dict:
+    """
+    Run batch inference against a VLLM server.
+
+    Args:
+        prompts: List of prompts to process
+        schema_class: Pydantic model for output validation
+        server_url: Server URL (e.g., "http://localhost:9001/v1")
+        model_name: Model name to use
+        max_concurrent: Maximum concurrent requests
+
+    Returns:
+        Dictionary with results and metadata
+    """
     if not prompts:
-        logger.error("Error: Empty prompts list provided")
-        return None
+        logger.error("Empty prompts list provided")
+        return {"error": "Empty prompts list"}
 
-    prompts = prompts[:100]  # Limit to 100 prompts
-    model = model_name if model_name else DEFAULT_MODEL_NAME
-    vllm_url = server_url if server_url else f"http://localhost:{DEFAULT_VLLM_PORT}/v1"
+    logger.info(f"Running batch inference on {len(prompts)} prompts...")
+    logger.info(f"  Server: {server_url}")
+    logger.info(f"  Model: {model_name}")
+    logger.info(f"  Max concurrent: {max_concurrent}")
 
-    async_client = AsyncOpenAI(base_url=vllm_url, api_key="EMPTY")
-
-    all_results = await _run_concurrent_inference(
-        prompts, schema_class, model, async_client, max_concurrent
-    )
-
-    output_data = _prepare_output_data(all_results, "in-memory-list", model, len(prompts))
-
-    if output_file:
-        _save_results(output_data, output_file)
-
-    return output_data
-
-
-async def run_inference(
-    schema_class: type[BaseModel],
-    prompt_file: str,
-    model_name: str = None,
-    output_file: str | None = None,
-    max_concurrent: int = DEFAULT_MAX_CONCURRENT,
-    server_url: str = None,
-):
-    """Run inference requests against the VLLM server for multiple prompts."""
-    prompts = _load_prompts(prompt_file)
-    if prompts is None:
-        return
-
-    prompts = prompts[:100]  # Limit to 100 prompts
-    model = model_name if model_name else DEFAULT_MODEL_NAME
-    vllm_url = server_url if server_url else f"http://localhost:{DEFAULT_VLLM_PORT}/v1"
-
-    async_client = AsyncOpenAI(base_url=vllm_url, api_key="EMPTY")
+    async_client = AsyncOpenAI(base_url=server_url, api_key="EMPTY")
 
     all_results = await _run_concurrent_inference(
-        prompts, schema_class, model, async_client, max_concurrent
+        prompts, schema_class, model_name, async_client, max_concurrent
     )
 
-    output_data = _prepare_output_data(all_results, prompt_file, model, len(prompts))
-
-    if output_file:
-        _save_results(output_data, output_file)
-
-    return output_data
-
-
-def _load_prompts(prompt_file: str) -> Optional[List[str]]:
-    """Load prompts from JSON file."""
-    try:
-        with open(prompt_file, "r") as f:
-            prompts = json.load(f)
-        logger.info(f"Loaded {len(prompts)} prompts from '{prompt_file}'")
-
-        if not isinstance(prompts, list):
-            logger.error("Error: Prompt file must contain a JSON array of prompts")
-            return None
-
-        return prompts
-    except FileNotFoundError:
-        logger.error(f"Error: Prompt file '{prompt_file}' not found.")
-        return None
-    except json.JSONDecodeError as e:
-        logger.error(f"Error: Invalid JSON in '{prompt_file}': {e}")
-        return None
+    return _prepare_output_data(all_results, model_name, len(prompts))
 
 
 async def _run_concurrent_inference(
@@ -500,8 +638,14 @@ async def _run_concurrent_inference(
     async_client: AsyncOpenAI,
     max_concurrent: int,
 ) -> List[dict]:
-    """Run inference for all prompts with concurrency limit and progress tracking."""
-    from tqdm.asyncio import tqdm as atqdm
+    """Run inference with concurrency limit and progress tracking."""
+    try:
+        from tqdm.asyncio import tqdm as atqdm
+
+        use_tqdm = True
+    except ImportError:
+        use_tqdm = False
+        logger.info("Install tqdm for progress bars: pip install tqdm")
 
     semaphore = asyncio.Semaphore(max_concurrent)
 
@@ -511,49 +655,77 @@ async def _run_concurrent_inference(
 
     tasks = [bounded_inference(prompt, idx) for idx, prompt in enumerate(prompts)]
 
-    # Use tqdm for async progress tracking
-    desc = f"Level inference ({len(prompts)} prompts)"
-    results = []
-    for coro in atqdm.as_completed(tasks, total=len(tasks), desc=desc, unit="req"):
-        result = await coro
-        results.append(result)
+    if use_tqdm:
+        results = []
+        for coro in atqdm.as_completed(tasks, total=len(tasks), desc="Processing", unit="req"):
+            result = await coro
+            results.append(result)
+    else:
+        results = await asyncio.gather(*tasks)
 
-    # Sort by prompt_index to maintain order
+    # Sort by prompt_index
     results.sort(key=lambda x: x.get("prompt_index", 0))
     return results
 
 
-def _prepare_output_data(
-    all_results: List[dict],
-    prompt_file: str,
-    model: str,
-    total_prompts: int,
-) -> dict:
+def _prepare_output_data(all_results: List[dict], model: str, total_prompts: int) -> dict:
     """Prepare output data structure."""
-    successful_results = [r for r in all_results if r["success"]]
-    failed_results = [r for r in all_results if not r["success"]]
+    successful = [r for r in all_results if r.get("success")]
+    failed = [r for r in all_results if not r.get("success")]
+
+    logger.info("\nInference complete:")
+    logger.info(f"  Total: {total_prompts}")
+    logger.info(f"  Successful: {len(successful)}")
+    logger.info(f"  Failed: {len(failed)}")
 
     return {
         "metadata": {
-            "prompt_file": prompt_file,
             "model_name": model,
             "total_prompts": total_prompts,
-            "successful": len(successful_results),
-            "failed": len(failed_results),
+            "successful": len(successful),
+            "failed": len(failed),
         },
-        "results": successful_results,
-        "errors": failed_results if failed_results else None,
+        "results": successful,
+        "errors": failed if failed else None,
     }
 
 
-def _save_results(output_data: dict, output_file: str):
-    """Save results to JSON file."""
-    try:
-        with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(output_data, f, indent=4, ensure_ascii=False)
-        logger.info(f"Results successfully written to: {output_file}")
-    except Exception as e:
-        logger.error(f"Failed to write results to '{output_file}': {e}")
+# ============================================================================
+# Backwards Compatibility Aliases
+# ============================================================================
+
+
+async def run_inference_from_list(
+    prompts: List[str],
+    schema_class: type[BaseModel],
+    model_name: str = None,
+    output_file: str | None = None,
+    max_concurrent: int = DEFAULT_MAX_CONCURRENT,
+    server_url: str = None,
+):
+    """
+    Backwards compatibility wrapper for run_batch_inference.
+
+    DEPRECATED: Use run_batch_inference() instead.
+    """
+    server_url = server_url or f"http://localhost:{DEFAULT_VLLM_PORT}/v1"
+    model_name = model_name or DEFAULT_MODEL_NAME
+
+    results = await run_batch_inference(
+        prompts=prompts,
+        schema_class=schema_class,
+        server_url=server_url,
+        model_name=model_name,
+        max_concurrent=max_concurrent,
+    )
+
+    if output_file:
+        import json
+
+        with open(output_file, "w") as f:
+            json.dump(results, f, indent=2)
+
+    return results
 
 
 # ============================================================================
@@ -566,11 +738,30 @@ def _parse_args():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Enhanced VLLM Server with Multi-Instance Support"
+        description="Production-Ready VLLM Server Manager",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Start server on default port (9001) with GPUs 7,6
+  python vllm_server.py start
+  
+  # Start instance 1 on port 9002 with GPUs 5,4
+  python vllm_server.py start --instance-id 1 --gpu-ids 5,4
+  
+  # Force restart a server
+  python vllm_server.py start --instance-id 0 --force
+  
+  # Check server status
+  python vllm_server.py status --instance-id 0
+  
+  # Stop server
+  python vllm_server.py stop --instance-id 0
+        """,
     )
+
     parser.add_argument(
         "command",
-        choices=["start", "stop", "status", "run"],
+        choices=["start", "stop", "restart", "status"],
         help="Command to execute",
     )
 
@@ -605,22 +796,10 @@ def _parse_args():
         default=DEFAULT_TENSOR_PARALLEL_SIZE,
         help=f"Tensor parallel size (default: {DEFAULT_TENSOR_PARALLEL_SIZE})",
     )
-
-    # Inference options
     parser.add_argument(
-        "--prompt-file",
-        type=str,
-        help="Path to prompt file for inference",
-    )
-    parser.add_argument(
-        "--output-file",
-        type=str,
-        help="Output file for inference results",
-    )
-    parser.add_argument(
-        "--server-url",
-        type=str,
-        help="Server URL for inference",
+        "--force",
+        action="store_true",
+        help="Force restart if server is already running",
     )
 
     return parser.parse_args()
@@ -636,7 +815,7 @@ def _create_config_from_args(args) -> ServerConfig:
         gpu_ids = [int(x.strip()) for x in args.gpu_ids.split(",")]
     else:
         # Default: descending pairs based on instance_id
-        # Instance 0: [7,6], Instance 1: [5,4], Instance 2: [3,2]
+        # Instance 0: [7,6], Instance 1: [5,4], Instance 2: [3,2], Instance 3: [1,0]
         high_gpu = 7 - (args.instance_id * 2)
         gpu_ids = [high_gpu, high_gpu - 1]
 
@@ -649,82 +828,54 @@ def _create_config_from_args(args) -> ServerConfig:
     )
 
 
-def _handle_start_command(server: VLLMServer):
-    """Handle the start command."""
-    process = server.start()
-    if process and server.wait_for_ready():
-        logger.info("VLLM server is running and ready!")
-        logger.info(f"  URL: {server.config.url}")
-        logger.info(f"  GPUs: {server.config.cuda_visible_devices}")
-        logger.info(f"  Data Dir: {server.config.instance_dir}")
-    elif process:
-        logger.error("Server process started but did not become ready in time.")
-        server.stop()
-        sys.exit(1)
-    else:
-        logger.error("Failed to start server.")
-        sys.exit(1)
-
-
-def _handle_stop_command(server: VLLMServer):
-    """Handle the stop command."""
-    server.stop()
-
-
-def _handle_status_command(server: VLLMServer):
-    """Handle the status command."""
-    status = server.status()
-    print(f"\nVLLM Server Instance {status['instance_id']} Status:")
-    print("=" * 70)
-    print(f"  Port: {status['port']}")
-    print(f"  URL: {status['url']}")
-    print(f"  GPUs: {status['gpu_ids']}")
-    print(f"  Data Directory: {status['instance_dir']}")
-    print(f"  PID File: {status['pid_file']}")
-    print(f"  Running: {'✓ Yes' if status['is_running'] else '✗ No'}")
-    if status["pid"]:
-        print(f"  PID: {status['pid']}")
-    print("=" * 70)
-
-
-def _handle_run_command(server: VLLMServer, args):
-    """Handle the run command."""
-    if not args.prompt_file:
-        logger.error("--prompt-file required for run command")
-        sys.exit(1)
-
-    # Check if server is running
-    if not server.wait_for_ready(timeout=10):
-        logger.error("Server is not running or not responding. Please start the server first.")
-        sys.exit(1)
-
-    server_url = args.server_url or server.config.url
-    asyncio.run(
-        run_inference(
-            ListOfSingleClassificationResult,
-            args.prompt_file,
-            args.model,
-            args.output_file,
-            server_url=server_url,
-        )
-    )
-
-
 def main():
     """CLI entry point."""
     args = _parse_args()
-    config = _create_config_from_args(args)
-    server = VLLMServer(config)
 
-    # Execute command
-    if args.command == "start":
-        _handle_start_command(server)
-    elif args.command == "stop":
-        _handle_stop_command(server)
-    elif args.command == "status":
-        _handle_status_command(server)
-    elif args.command == "run":
-        _handle_run_command(server, args)
+    try:
+        config = _create_config_from_args(args)
+        server = VLLMServer(config)
+
+        if args.command == "start":
+            success = server.start(force_restart=args.force)
+            sys.exit(0 if success else 1)
+
+        elif args.command == "stop":
+            success = server.stop()
+            sys.exit(0 if success else 1)
+
+        elif args.command == "restart":
+            success = server.restart()
+            sys.exit(0 if success else 1)
+
+        elif args.command == "status":
+            status = server.status()
+            print(f"\nVLLM Server Instance {status['instance_id']} Status:")
+            print("=" * 70)
+            print(f"  Model: {status['model']}")
+            print(f"  Port: {status['port']}")
+            print(f"  URL: {status['url']}")
+            print(f"  GPUs: {status['gpu_ids']}")
+            print(f"  Data Directory: {status['data_dir']}")
+            print(f"  Running: {'✓ Yes' if status['is_running'] else '✗ No'}")
+            if status.get("pid"):
+                print(f"  PID: {status['pid']}")
+            if status.get("gpu_memory"):
+                print("  GPU Memory Usage:")
+                for gpu, usage in status["gpu_memory"].items():
+                    print(f"    {gpu}: {usage}")
+            print("=" * 70)
+            sys.exit(0 if status["is_running"] else 1)
+
+    except KeyboardInterrupt:
+        logger.info("\nInterrupted by user")
+        sys.exit(1)
+    except Exception as e:
+        logger.error(f"Fatal error: {e}")
+        import traceback
+
+        traceback.print_exc()
+        sys.exit(1)
 
 
 if __name__ == "__main__":
