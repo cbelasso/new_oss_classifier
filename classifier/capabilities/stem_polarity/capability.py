@@ -9,9 +9,9 @@ from typing import Any, Dict, List, Type
 
 from pydantic import BaseModel
 
-from ..models import StemPolarityOutput
-from ..prompts import stem_polarity_prompt
-from .base import Capability
+from ..base import Capability
+from .models import StemPolarityOutput
+from .prompts import stem_polarity_prompt
 
 
 class StemPolarityCapability(Capability):

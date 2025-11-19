@@ -8,9 +8,9 @@ from typing import Any, Dict, Type
 
 from pydantic import BaseModel
 
-from ..models import TrendsOutput
-from ..prompts import trends_detection_prompt
-from .base import Capability
+from ..base import Capability
+from .models import TrendsOutput
+from .prompts import trends_detection_prompt
 
 
 class TrendCapability(Capability):

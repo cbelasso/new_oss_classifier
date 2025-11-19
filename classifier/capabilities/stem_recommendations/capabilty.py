@@ -9,9 +9,9 @@ from typing import Any, Dict, List, Type
 
 from pydantic import BaseModel
 
-from ..models import StemRecommendationsOutput
-from ..prompts import stem_recommendations_prompt
-from .base import Capability
+from ..base import Capability
+from .models import StemRecommendationsOutput
+from .prompts import stem_recommendations_prompt
 
 # Mapping from internal types to output format
 STEM_RECOMMENDATION_TYPE_MAPPING = {

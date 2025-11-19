@@ -8,9 +8,9 @@ from typing import Any, Dict, Type
 
 from pydantic import BaseModel
 
-from ..models import RecommendationsOutput
-from ..prompts import recommendations_detection_prompt
-from .base import Capability
+from ..base import Capability
+from .models import RecommendationsOutput
+from .prompts import recommendations_detection_prompt
 
 
 class RecommendationsCapability(Capability):

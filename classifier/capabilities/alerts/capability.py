@@ -8,9 +8,9 @@ from typing import Any, Dict, Type
 
 from pydantic import BaseModel
 
-from ..models import AlertsOutput
-from ..prompts import alert_detection_prompt
-from .base import Capability
+from ..base import Capability
+from .models import AlertsOutput
+from .prompts import alert_detection_prompt
 
 
 class AlertsCapability(Capability):

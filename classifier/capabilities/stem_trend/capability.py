@@ -9,9 +9,9 @@ from typing import Any, Dict, List, Type
 
 from pydantic import BaseModel
 
-from ..models import StemTrendsOutput
-from ..prompts import stem_trends_prompt
-from .base import Capability
+from ..base import Capability
+from .models import StemTrendsOutput
+from .prompts import stem_trends_prompt
 
 
 class StemTrendCapability(Capability):
