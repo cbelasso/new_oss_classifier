@@ -98,7 +98,7 @@ class CapabilityOrchestrator:
         self.processor = processor
         self.registry = registry
         self.verbose = verbose
-        self.capability_timings = {}  # Track timing per capability
+        self.capability_timings = {}
 
     def execute_capabilities(
         self, texts: List[str], capability_names: List[str], project_name: str = None
@@ -114,7 +114,7 @@ class CapabilityOrchestrator:
         Returns:
             Dict mapping text to all capability results
         """
-        # Reset timings for this execution
+        # Reset timings
         self.capability_timings = {}
 
         # Resolve execution order
@@ -126,7 +126,7 @@ class CapabilityOrchestrator:
         # Initialize results structure
         results = {text: {"text": text} for text in texts}
 
-        # Context for capabilities (stores intermediate results)
+        # Context for capabilities
         context: Dict[str, Dict[str, Any]] = {}
 
         # Execute capabilities in order with progress bar
@@ -146,20 +146,24 @@ class CapabilityOrchestrator:
                 if self.verbose > 0:
                     console.print(f"[cyan]Executing capability: {cap_name}[/cyan]")
 
-                # Special handling for classification capability
-                if cap_name == "classification":
-                    cap_results = self._execute_classification(texts)
+                # ============================================================
+                # NEW: Special handling for ClassificationCapability
+                # ============================================================
+                if isinstance(capability, ClassificationCapability):
+                    cap_results = self._execute_classification_capability(
+                        capability, texts, project_name
+                    )
 
-                    # Build context for dependent capabilities
+                    # Build context for dependent capabilities (stem analysis)
                     if any(
-                        cap_name in ["stem_recommendations", "stem_polarity", "stem_trend"]
-                        for cap_name in capability_names
+                        dep_name in ["stem_recommendations", "stem_polarity", "stem_trend"]
+                        for dep_name in capability_names
                     ):
                         context = self._build_classification_context(
                             texts, cap_results, project_name
                         )
                 else:
-                    # Execute regular capability
+                    # Regular capability execution
                     cap_results = self._execute_capability(capability, texts, context)
 
                 # Merge results
@@ -175,6 +179,111 @@ class CapabilityOrchestrator:
                 pbar.update(1)
 
         return results
+
+    def _execute_classification_capability(
+        self,
+        capability: ClassificationCapability,
+        texts: List[str],
+        project_name: str = None,
+    ) -> Dict[str, Any]:
+        """
+        Execute a classification capability.
+
+        Classification capabilities need special handling because they:
+        - Use custom traversal logic (BFS, bundled, etc.)
+        - Need direct access to hierarchy and processor
+        - Return structured ClassificationOutput objects
+
+        Args:
+            capability: ClassificationCapability instance
+            texts: Texts to classify
+            project_name: Optional project name
+
+        Returns:
+            Dict mapping text -> ClassificationOutput
+        """
+        hierarchy = self.processor.topic_hierarchy
+
+        return capability.execute_classification(
+            texts=texts,
+            hierarchy=hierarchy,
+            processor=self.processor.llm_processor,  # Pass underlying LLM processor
+        )
+
+    def _execute_capability(
+        self, capability, texts: List[str], context: Dict[str, Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """Execute a regular (non-classification) capability."""
+        # Prepare prompts
+        prompts = capability.prepare_batch(texts, context)
+
+        # Create mapping: text -> prompt (for simple capabilities)
+        text_to_prompt_map = None
+        if len(prompts) == len(texts):
+            text_to_prompt_map = {text: prompt for text, prompt in zip(texts, prompts)}
+
+        # Execute with processor (results keyed by prompt)
+        prompt_results = self.processor.classify_with_custom_schema(
+            texts=prompts,
+            prompt_fn=lambda x: x,  # Prompts already formatted
+            schema=capability.schema,
+        )
+
+        # Post-process results
+        processed_results = capability.post_process(prompt_results, context)
+
+        # Remap from prompt keys to text keys if needed
+        if text_to_prompt_map is not None:
+            results = {}
+            for text, prompt in text_to_prompt_map.items():
+                if prompt in processed_results:
+                    results[text] = processed_results[prompt]
+                else:
+                    if self.verbose >= 2:
+                        console.print("[yellow]Warning: No result for prompt[/yellow]")
+                    results[text] = None
+            return results
+        else:
+            # Stem capabilities already return text-keyed results from post_process
+            return processed_results
+
+    def _build_classification_context(
+        self, texts: List[str], classification_results: Dict[str, Any], project_name: str = None
+    ) -> Dict[str, Dict[str, Any]]:
+        """
+        Build context from classification results for dependent capabilities.
+
+        Extracts complete stems and adds hierarchy reference.
+        """
+        hierarchy = self.processor.topic_hierarchy
+        leaf_paths_set = get_leaf_paths_set(hierarchy)
+        root_prefix = get_root_prefix(hierarchy, project_name=project_name)
+
+        context = {"_hierarchy": hierarchy}
+
+        for text in texts:
+            if text in classification_results:
+                result = classification_results[text]
+
+                # Convert to dict if needed
+                if hasattr(result, "model_dump"):
+                    result_dict = result.model_dump()
+                elif hasattr(result, "dict"):
+                    result_dict = result.dict()
+                else:
+                    result_dict = result
+
+                # Extract classification paths
+                classification_paths = result_dict.get("classification_paths", [])
+
+                # Identify complete stems
+                complete_stems = identify_complete_stems(
+                    classification_paths, leaf_paths_set, root_prefix
+                )
+
+                context[text] = {"complete_stems": complete_stems}
+
+        return context
 
     def get_timing_summary(self) -> Dict[str, float]:
         """
@@ -207,88 +316,6 @@ class CapabilityOrchestrator:
 
         lines.append(f"  • Total: {total:.2f}s")
         return "\n".join(lines)
-
-    def _execute_classification(self, texts: List[str]) -> Dict[str, Any]:
-        """Execute hierarchical classification."""
-        return self.processor.classify_hierarchical(texts=texts)
-
-    def _execute_capability(
-        self, capability, texts: List[str], context: Dict[str, Dict[str, Any]]
-    ) -> Dict[str, Any]:
-        """Execute a single capability."""
-        # Prepare prompts
-        prompts = capability.prepare_batch(texts, context)
-
-        # Create mapping: text -> prompt
-        # For simple capabilities: len(prompts) == len(texts)
-        # For complex capabilities (stem): handled in post_process
-        text_to_prompt_map = None
-        if len(prompts) == len(texts):
-            text_to_prompt_map = {text: prompt for text, prompt in zip(texts, prompts)}
-
-        # Execute with processor (results keyed by prompt)
-        prompt_results = self.processor.classify_with_custom_schema(
-            texts=prompts,
-            prompt_fn=lambda x: x,  # Prompts already formatted
-            schema=capability.schema,
-        )
-
-        # Post-process results
-        processed_results = capability.post_process(prompt_results, context)
-
-        # Remap from prompt keys to text keys if needed
-        if text_to_prompt_map is not None:
-            results = {}
-            for text, prompt in text_to_prompt_map.items():
-                if prompt in processed_results:
-                    results[text] = processed_results[prompt]
-                else:
-                    # Handle missing results gracefully
-                    if self.verbose >= 2:
-                        console.print("[yellow]Warning: No result for prompt[/yellow]")
-                    results[text] = None
-            return results
-        else:
-            # Stem capabilities already return text-keyed results from post_process
-            return processed_results
-
-    def _build_classification_context(
-        self, texts: List[str], classification_results: Dict[str, Any], project_name: str = None
-    ) -> Dict[str, Dict[str, Any]]:
-        """
-        Build context from classification results for dependent capabilities.
-
-        Extracts complete stems and adds hierarchy reference.
-        """
-        hierarchy = self.processor.topic_hierarchy
-        leaf_paths_set = get_leaf_paths_set(hierarchy)
-        root_prefix = get_root_prefix(hierarchy, project_name=None)
-
-        context = {"_hierarchy": hierarchy}
-
-        for text in texts:
-            if text in classification_results:
-                result = classification_results[text]
-
-                # Convert to dict if needed
-                if hasattr(result, "model_dump"):
-                    result_dict = result.model_dump()
-                elif hasattr(result, "dict"):
-                    result_dict = result.dict()
-                else:
-                    result_dict = result
-
-                # Extract classification paths
-                classification_paths = result_dict.get("classification_paths", [])
-
-                # Identify complete stems
-                complete_stems = identify_complete_stems(
-                    classification_paths, leaf_paths_set, root_prefix
-                )
-
-                context[text] = {"complete_stems": complete_stems}
-
-        return context
 
     def _merge_results(
         self, results: Dict[str, Dict[str, Any]], capability_results: Dict[str, Any], capability

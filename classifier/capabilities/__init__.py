@@ -8,7 +8,7 @@ that can declare dependencies and be composed with other capabilities.
 
 from .alerts import AlertsCapability
 from .base import Capability
-from .classification import ClassificationCapability
+from .classification import BFSClassificationCapability, ClassificationCapability  # ← ADDED
 from .orchestrator import CapabilityOrchestrator
 from .recommendations import RecommendationsCapability
 from .registry import CapabilityRegistry, create_default_registry
@@ -24,6 +24,7 @@ __all__ = [
     "create_default_registry",
     # Standard capabilities
     "ClassificationCapability",
+    "BFSClassificationCapability",
     "RecommendationsCapability",
     "AlertsCapability",
     "StemRecommendationsCapability",

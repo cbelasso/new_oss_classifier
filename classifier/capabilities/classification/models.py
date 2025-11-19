@@ -20,29 +20,6 @@ class SingleClassificationResult(BaseModel):
     excerpt: str
 
 
-class NodeConfig(BaseModel):
-    """
-    Configuration for a single node in the topic hierarchy.
-
-    Attributes:
-        name: Node identifier
-        description: Detailed description of the topic
-        keywords: List of relevant keywords
-        scope: Scope definition for the topic
-        children: Child nodes in the hierarchy
-    """
-
-    name: str
-    description: str = "[No Description]"
-    keywords: List[str] = []
-    scope: str = "[None]"
-    children: List["NodeConfig"] = []
-
-    class Config:
-        # Allow arbitrary types for flexibility
-        arbitrary_types_allowed = True
-
-
 class ClassificationOutput(BaseModel):
     """
     Final output for a single text's classification.

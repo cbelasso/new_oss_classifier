@@ -187,19 +187,16 @@ def create_default_registry() -> CapabilityRegistry:
         CapabilityRegistry with standard capabilities
     """
     from .alerts import AlertsCapability
-    from .classification import ClassificationCapability
+    from .classification import BFSClassificationCapability
     from .recommendations import RecommendationsCapability
     from .trend import TrendCapability
 
     registry = CapabilityRegistry()
 
     # Register standard capabilities
-    registry.register(ClassificationCapability())
+    registry.register(BFSClassificationCapability())
     registry.register(RecommendationsCapability())
     registry.register(AlertsCapability())
     registry.register(TrendCapability())
-
-    # Note: Stem capabilities need parameters, so they're registered on-demand
-    # in the orchestrator based on CLI flags
 
     return registry
