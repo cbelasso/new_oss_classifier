@@ -33,7 +33,6 @@ from .policies import (
     KeywordInReasoningPolicy,
     MinimumReasoningLengthPolicy,
 )
-from .server_processor import ServerClassificationProcessor
 
 __version__ = "1.0.0"
 
@@ -67,6 +66,7 @@ __all__ = [
     "CapabilityOrchestrator",
     "CapabilityRegistry",
     "create_default_registry",
+    "SubStemPolarityCapability"
     # Processor
     "ServerClassificationProcessor",
 ]

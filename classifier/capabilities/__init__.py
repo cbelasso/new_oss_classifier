@@ -15,6 +15,7 @@ from .registry import CapabilityRegistry, create_default_registry
 from .stem_polarity import StemPolarityCapability
 from .stem_recommendations import StemRecommendationsCapability
 from .stem_trend import StemTrendCapability
+from .sub_stem_polarity import SubStemPolarityCapability
 from .trend import TrendCapability
 
 __all__ = [
@@ -31,4 +32,5 @@ __all__ = [
     "StemPolarityCapability",
     "TrendCapability",
     "StemTrendCapability",
+    "SubStemPolarityCapability",
 ]

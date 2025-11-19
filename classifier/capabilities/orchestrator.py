@@ -158,7 +158,13 @@ class CapabilityOrchestrator:
 
                     # Build context for dependent capabilities (stem analysis)
                     if any(
-                        dep_name in ["stem_recommendations", "stem_polarity", "stem_trend"]
+                        dep_name
+                        in [
+                            "stem_recommendations",
+                            "stem_polarity",
+                            "stem_trend",
+                            "sub_stem_polarity",
+                        ]
                         for dep_name in capability_names
                     ):
                         context = self._build_classification_context(

@@ -42,6 +42,7 @@ from classifier.capabilities import (
     CapabilityOrchestrator,
     StemPolarityCapability,
     StemRecommendationsCapability,
+    SubStemPolarityCapability,
     create_default_registry,
 )
 from classifier.capabilities.classification.prompts import standard_classification_prompt
@@ -274,6 +275,11 @@ def format_results_for_output(results: Dict[str, Dict[str, Any]]) -> List[Dict]:
     help="Enable stem polarity analysis (requires classification)",
 )
 @click.option(
+    "--enable-sub-stem-polarity",
+    is_flag=True,
+    help="Enable sub-stem polarity analysis (requires classification)",
+)
+@click.option(
     "--enable-stem-trends",
     is_flag=True,
     help="Enable stem trend analysis (requires classification)",
@@ -331,6 +337,7 @@ def main(
     enable_alerts: bool,
     enable_stem_recommendations: bool,
     enable_stem_polarity: bool,
+    enable_sub_stem_polarity: bool,
     enable_stem_trends: bool,
     enable_trends: bool,
     max_stem_definitions: int,
@@ -366,6 +373,7 @@ def main(
         enable_classification = False
         enable_stem_recommendations = False
         enable_stem_polarity = False
+        enable_sub_stem_polarity = False
         enable_stem_trends = False
 
     # Validate config requirement
@@ -414,6 +422,8 @@ def main(
             enabled_caps.append("alerts")
         if enable_stem_recommendations:
             enabled_caps.append("stem_recommendations")
+        if enable_sub_stem_polarity:
+            enabled_caps.append("sub_stem_polarity")
         if enable_stem_polarity:
             enabled_caps.append("stem_polarity")
         if enable_trends:
@@ -460,6 +470,11 @@ def main(
         if enable_stem_polarity:
             registry.register(StemPolarityCapability(max_stem_definitions=max_stem_definitions))
 
+        if enable_sub_stem_polarity:
+            registry.register(
+                SubStemPolarityCapability(max_stem_definitions=max_stem_definitions)
+            )
+
         if enable_stem_trends:
             registry.register(StemTrendCapability(max_stem_definitions=max_stem_definitions))
 
@@ -475,6 +490,8 @@ def main(
             capability_names.append("stem_recommendations")
         if enable_stem_polarity:
             capability_names.append("stem_polarity")
+        if enable_sub_stem_polarity:
+            capability_names.append("sub_stem_polarity")
         if enable_stem_trends:
             capability_names.append("stem_trend")
         if enable_trends:
