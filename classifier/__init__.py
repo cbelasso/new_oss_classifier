@@ -3,13 +3,13 @@ Hierarchical Text Classification Package
 """
 
 from .capabilities import (
-    CapabilityOrchestrator,
     CapabilityRegistry,
     create_default_registry,
 )
 from .capabilities.classification import (
     BatchClassificationResult,
     BFSClassificationCapability,
+    BundledClassificationCapability,
     ClassificationCapability,
     ClassificationOutput,
     SingleClassificationResult,
@@ -62,6 +62,7 @@ __all__ = [
     # Classification
     "ClassificationCapability",
     "BFSClassificationCapability",
+    "BundledClassificationCapability",
     # Capabilities
     "CapabilityOrchestrator",
     "CapabilityRegistry",

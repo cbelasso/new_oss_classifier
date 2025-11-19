@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 
 def standard_classification_prompt(node_config: Dict[str, Any]) -> str:

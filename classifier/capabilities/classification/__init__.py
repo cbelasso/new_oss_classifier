@@ -2,10 +2,9 @@
 Classification detection capability.
 """
 
-from bundled import BundledClassificationCapability
-
 from .base import ClassificationCapability
 from .bfs import BFSClassificationCapability
+from .bundled import BundledClassificationCapability
 from .models import (
     BatchClassificationResult,
     BundledClassificationResult,

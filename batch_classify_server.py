@@ -37,6 +37,7 @@ import pandas as pd
 from rich.console import Console
 from tqdm import tqdm
 
+from classifier import BundledClassificationCapability
 from classifier.capabilities import (
     CapabilityOrchestrator,
     StemPolarityCapability,
@@ -298,6 +299,18 @@ def format_results_for_output(results: Dict[str, Dict[str, Any]]) -> List[Dict]:
     is_flag=True,
     help="Only detect alerts (no classification)",
 )
+@click.option(
+    "--classification-strategy",
+    type=click.Choice(["bfs", "bundled"]),
+    default="bfs",
+    help="Classification strategy: bfs (one node per prompt) or bundled (multiple nodes per prompt)",
+)
+@click.option(
+    "--bundle-size",
+    type=int,
+    default=4,
+    help="Number of nodes to bundle per prompt (only for bundled strategy)",
+)
 def main(
     config: Path,
     server_url: str,
@@ -323,6 +336,8 @@ def main(
     max_stem_definitions: int,
     recommendations_only: bool,
     alerts_only: bool,
+    classification_strategy: str,
+    bundle_size: int,
 ):
     """
     Batch hierarchical text classification using VLLM Server.
@@ -428,6 +443,13 @@ def main(
     ) as processor:
         # Create capability registry
         registry = create_default_registry()
+
+        # SWAP to bundled if requested
+        if classification_strategy == "bundled":
+            bundled_cap = BundledClassificationCapability(
+                bundle_size=bundle_size, policy=policy, separator=">"
+            )
+        registry.register(bundled_cap)  # Overwrites the BFS one
 
         # Register stem capabilities if requested
         if enable_stem_recommendations:
