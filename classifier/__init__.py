@@ -3,27 +3,18 @@ Hierarchical Text Classification Package
 """
 
 from .capabilities import (
+    BFSClassificationCapability,
+    BundledClassificationCapability,
     CapabilityRegistry,
+    ClassificationCapability,
     create_default_registry,
 )
 from .capabilities.classification import (
     BatchClassificationResult,
-    BFSClassificationCapability,
-    BundledClassificationCapability,
-    ClassificationCapability,
     ClassificationOutput,
     SingleClassificationResult,
 )
-from .hierarchy import (
-    NodeConfig,
-    build_tree_from_paths,
-    format_tree_as_string,
-    get_all_leaf_paths,
-    get_node_path,
-    load_topic_hierarchy,
-    validate_hierarchy,
-)
-from .policies import (
+from .core import (
     AcceptancePolicy,
     AnyPolicy,
     CompositePolicy,
@@ -32,7 +23,16 @@ from .policies import (
     ExcerptRequiredPolicy,
     KeywordInReasoningPolicy,
     MinimumReasoningLengthPolicy,
+    NodeConfig,
+    build_tree_from_paths,
+    format_tree_as_string,
+    get_all_leaf_paths,
+    get_node_path,
+    load_topic_hierarchy,
+    validate_hierarchy,
 )
+from .orchestration import CapabilityOrchestrator
+from .server import ServerClassificationProcessor
 
 __version__ = "1.0.0"
 
@@ -62,11 +62,11 @@ __all__ = [
     "ClassificationCapability",
     "BFSClassificationCapability",
     "BundledClassificationCapability",
-    # Capabilities
+    # Orchestration
     "CapabilityOrchestrator",
+    # Registry
     "CapabilityRegistry",
     "create_default_registry",
-    "SubStemPolarityCapability"
     # Processor
     "ServerClassificationProcessor",
 ]

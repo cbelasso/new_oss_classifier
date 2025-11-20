@@ -14,8 +14,8 @@ from pydantic import BaseModel
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("openai").setLevel(logging.WARNING)
 
-# Import from your vllm_server module
-from vllm_server import run_inference_from_list
+# Import from sibling module
+from .vllm_server import run_inference_from_list
 
 
 class VLLMServerClient:

@@ -10,13 +10,12 @@ from typing import Any, Callable, Dict, List, Type
 
 from pydantic import BaseModel
 
-from .capabilities.classification import (
+from ..capabilities.classification import (
     BFSClassificationCapability,
     ClassificationOutput,
     standard_classification_prompt,
 )
-from .hierarchy import load_topic_hierarchy
-from .policies import AcceptancePolicy, DefaultPolicy
+from ..core import AcceptancePolicy, DefaultPolicy, load_topic_hierarchy
 from .vllm_client import VLLMServerClient
 
 

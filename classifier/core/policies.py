@@ -8,7 +8,8 @@ complex acceptance criteria.
 
 from typing import Any, Dict, List, Protocol
 
-from .capabilities.classification.models import SingleClassificationResult
+# Import from capabilities package (not core)
+from ..capabilities.classification.models import SingleClassificationResult
 
 
 class AcceptancePolicy(Protocol):
