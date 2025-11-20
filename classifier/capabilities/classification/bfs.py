@@ -8,7 +8,7 @@ from typing import Any, Callable, Dict, List, Tuple, Type
 
 from pydantic import BaseModel
 
-from ...policies import AcceptancePolicy, DefaultPolicy
+from ...core import AcceptancePolicy, DefaultPolicy
 from .base import ClassificationCapability
 from .models import ClassificationOutput, SingleClassificationResult
 from .prompts import standard_classification_prompt

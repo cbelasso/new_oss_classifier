@@ -26,6 +26,14 @@ python batch_classify.py --config topics.json \\
     --server-url http://localhost:9002/v1
 """
 
+from pathlib import Path
+import sys
+
+# Add project root to path
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+
 import json
 from pathlib import Path
 import sys
