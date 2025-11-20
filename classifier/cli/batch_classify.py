@@ -7,21 +7,21 @@ Clean, streamlined version specifically for server-based inference.
 Usage examples:
 
 # Basic usage
-python batch_classify_server.py --config topics.json \\
+python batch_classify.py --config topics.json \\
     --input-file data.csv --save-path results.json
 
 # With recommendations and alerts
-python batch_classify_server.py --config topics.json \\
+python batch_classify.py --config topics.json \\
     --input-file data.csv --save-path results.json \\
     --enable-recommendations --enable-alerts
 
 # With stem analysis
-python batch_classify_server.py --config topics.json \\
+python batch_classify.py --config topics.json \\
     --input-file data.csv --save-path results.json \\
     --enable-stem-recommendations --enable-stem-polarity
 
 # Custom server URL
-python batch_classify_server.py --config topics.json \\
+python batch_classify.py --config topics.json \\
     --input-file data.csv --save-path results.json \\
     --server-url http://localhost:9002/v1
 """
@@ -37,23 +37,23 @@ import pandas as pd
 from rich.console import Console
 from tqdm import tqdm
 
-from classifier import BundledClassificationCapability
 from classifier.capabilities import (
-    CapabilityOrchestrator,
+    BundledClassificationCapability,
     StemPolarityCapability,
     StemRecommendationsCapability,
+    StemTrendCapability,
     SubStemPolarityCapability,
     create_default_registry,
+    standard_classification_prompt,
 )
-from classifier.capabilities.classification.prompts import standard_classification_prompt
-from classifier.capabilities.stem_trend import StemTrendCapability
-from classifier.policies import (
+from classifier.core import (
     CompositePolicy,
     ConfidenceThresholdPolicy,
     DefaultPolicy,
     ExcerptRequiredPolicy,
 )
-from classifier.server_processor import ServerClassificationProcessor
+from classifier.orchestration import CapabilityOrchestrator
+from classifier.server import ServerClassificationProcessor
 
 console = Console()
 

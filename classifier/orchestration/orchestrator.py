@@ -11,7 +11,7 @@ from typing import Any, Dict, List
 from rich.console import Console
 from tqdm import tqdm
 
-from .classification.base import ClassificationCapability
+from ..capabilities import ClassificationCapability
 
 console = Console()
 
